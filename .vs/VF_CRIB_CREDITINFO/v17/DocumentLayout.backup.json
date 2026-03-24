@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "H:\\CRIB New\\github\\VF_CRIB_INFO\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|h:\\crib new\\github\\vf_crib_info\\vf_crib_creditinfo.presentation\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|solutionrelative:vf_crib_creditinfo.presentation\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|h:\\crib new\\github\\vf_crib_info\\vf_crib_creditinfo.presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|solutionrelative:vf_crib_creditinfo.presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
@@ -31,6 +35,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Presentation\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Presentation\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Presentation\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "VF_CRIB_CREDITINFO.Presentation\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAAGIAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-23T08:44:54.263Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "appsettings.json",
               "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Presentation\\appsettings.json",
               "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Presentation\\appsettings.json",
@@ -38,8 +55,7 @@
               "RelativeToolTip": "VF_CRIB_CREDITINFO.Presentation\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-23T08:39:39.888Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-23T08:39:39.888Z"
             }
           ]
         }
