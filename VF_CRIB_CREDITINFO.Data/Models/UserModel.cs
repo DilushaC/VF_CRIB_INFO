@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace VF_CRIB_CREDITINFO.Data.Models
 {
-    public class LoginViewModel
+    public class UserModel
     {
+        public int Id { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
+        public string DisplayName { get; set; }
+        public string DisplayDesignation { get; set; }
+        public string DisplayDepartment { get; set; }
+        public bool IsActive { get; set; }
     }
 }

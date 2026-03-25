@@ -3,28 +3,44 @@
   "WorkspaceRootPath": "H:\\CRIB New\\github\\VF_CRIB_INFO\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|h:\\crib new\\github\\vf_crib_info\\vf_crib_creditinfo.presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|solutionrelative:vf_crib_creditinfo.presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|h:\\crib new\\github\\vf_crib_info\\vf_crib_creditinfo.presentation\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|solutionrelative:vf_crib_creditinfo.presentation\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|h:\\crib new\\github\\vf_crib_info\\vf_crib_creditinfo.presentation\\views\\user\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|solutionrelative:vf_crib_creditinfo.presentation\\views\\user\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|h:\\crib new\\github\\vf_crib_info\\vf_crib_creditinfo.presentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|solutionrelative:vf_crib_creditinfo.presentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{92C91FF3-5370-4F92-B48F-A0351CCBB078}|VF_CRIB_CREDITINFO.Data\\VF_CRIB_CREDITINFO.Data.csproj|h:\\crib new\\github\\vf_crib_info\\vf_crib_creditinfo.data\\models\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92C91FF3-5370-4F92-B48F-A0351CCBB078}|VF_CRIB_CREDITINFO.Data\\VF_CRIB_CREDITINFO.Data.csproj|solutionrelative:vf_crib_creditinfo.data\\models\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BDE23E39-0C4A-4FFC-8A23-5A620B4B2A89}|VF_CRIB_CREDITINFO.Business\\VF_CRIB_CREDITINFO.Business.csproj|h:\\crib new\\github\\vf_crib_info\\vf_crib_creditinfo.business\\userhandler\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDE23E39-0C4A-4FFC-8A23-5A620B4B2A89}|VF_CRIB_CREDITINFO.Business\\VF_CRIB_CREDITINFO.Business.csproj|solutionrelative:vf_crib_creditinfo.business\\userhandler\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BDE23E39-0C4A-4FFC-8A23-5A620B4B2A89}|VF_CRIB_CREDITINFO.Business\\VF_CRIB_CREDITINFO.Business.csproj|h:\\crib new\\github\\vf_crib_info\\vf_crib_creditinfo.business\\connectionhandler\\_connectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDE23E39-0C4A-4FFC-8A23-5A620B4B2A89}|VF_CRIB_CREDITINFO.Business\\VF_CRIB_CREDITINFO.Business.csproj|solutionrelative:vf_crib_creditinfo.business\\connectionhandler\\_connectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{92C91FF3-5370-4F92-B48F-A0351CCBB078}|VF_CRIB_CREDITINFO.Data\\VF_CRIB_CREDITINFO.Data.csproj|h:\\crib new\\github\\vf_crib_info\\vf_crib_creditinfo.data\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92C91FF3-5370-4F92-B48F-A0351CCBB078}|VF_CRIB_CREDITINFO.Data\\VF_CRIB_CREDITINFO.Data.csproj|solutionrelative:vf_crib_creditinfo.data\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92C91FF3-5370-4F92-B48F-A0351CCBB078}|VF_CRIB_CREDITINFO.Data\\VF_CRIB_CREDITINFO.Data.csproj|h:\\crib new\\github\\vf_crib_info\\vf_crib_creditinfo.data\\context\\dappercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92C91FF3-5370-4F92-B48F-A0351CCBB078}|VF_CRIB_CREDITINFO.Data\\VF_CRIB_CREDITINFO.Data.csproj|solutionrelative:vf_crib_creditinfo.data\\context\\dappercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BDE23E39-0C4A-4FFC-8A23-5A620B4B2A89}|VF_CRIB_CREDITINFO.Business\\VF_CRIB_CREDITINFO.Business.csproj|h:\\crib new\\github\\vf_crib_info\\vf_crib_creditinfo.business\\authentication\\adauthentication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BDE23E39-0C4A-4FFC-8A23-5A620B4B2A89}|VF_CRIB_CREDITINFO.Business\\VF_CRIB_CREDITINFO.Business.csproj|solutionrelative:vf_crib_creditinfo.business\\authentication\\adauthentication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{92C91FF3-5370-4F92-B48F-A0351CCBB078}|VF_CRIB_CREDITINFO.Data\\VF_CRIB_CREDITINFO.Data.csproj|h:\\crib new\\github\\vf_crib_info\\vf_crib_creditinfo.data\\context\\dappercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92C91FF3-5370-4F92-B48F-A0351CCBB078}|VF_CRIB_CREDITINFO.Data\\VF_CRIB_CREDITINFO.Data.csproj|solutionrelative:vf_crib_creditinfo.data\\context\\dappercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|h:\\crib new\\github\\vf_crib_info\\vf_crib_creditinfo.presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|solutionrelative:vf_crib_creditinfo.presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDE23E39-0C4A-4FFC-8A23-5A620B4B2A89}|VF_CRIB_CREDITINFO.Business\\VF_CRIB_CREDITINFO.Business.csproj|h:\\crib new\\github\\vf_crib_info\\vf_crib_creditinfo.business\\userhandler\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDE23E39-0C4A-4FFC-8A23-5A620B4B2A89}|VF_CRIB_CREDITINFO.Business\\VF_CRIB_CREDITINFO.Business.csproj|solutionrelative:vf_crib_creditinfo.business\\userhandler\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|h:\\crib new\\github\\vf_crib_info\\vf_crib_creditinfo.presentation\\views\\user\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|solutionrelative:vf_crib_creditinfo.presentation\\views\\user\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDE23E39-0C4A-4FFC-8A23-5A620B4B2A89}|VF_CRIB_CREDITINFO.Business\\VF_CRIB_CREDITINFO.Business.csproj|h:\\crib new\\github\\vf_crib_info\\vf_crib_creditinfo.business\\connectionhandler\\_connectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDE23E39-0C4A-4FFC-8A23-5A620B4B2A89}|VF_CRIB_CREDITINFO.Business\\VF_CRIB_CREDITINFO.Business.csproj|solutionrelative:vf_crib_creditinfo.business\\connectionhandler\\_connectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{92C91FF3-5370-4F92-B48F-A0351CCBB078}|VF_CRIB_CREDITINFO.Data\\VF_CRIB_CREDITINFO.Data.csproj|h:\\crib new\\github\\vf_crib_info\\vf_crib_creditinfo.data\\models\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,10 +55,6 @@
       "RelativeMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|solutionrelative:vf_crib_creditinfo.presentation\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|h:\\crib new\\github\\vf_crib_info\\vf_crib_creditinfo.presentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|solutionrelative:vf_crib_creditinfo.presentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|h:\\crib new\\github\\vf_crib_info\\vf_crib_creditinfo.presentation\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{CB0980A3-0A58-443D-B2EF-15B42AF8848E}|VF_CRIB_CREDITINFO.Presentation\\VF_CRIB_CREDITINFO.Presentation.csproj|solutionrelative:vf_crib_creditinfo.presentation\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
@@ -54,7 +66,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -70,59 +82,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Presentation\\Views\\User\\Login.cshtml",
-              "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Presentation\\Views\\User\\Login.cshtml",
-              "ToolTip": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Presentation\\Views\\User\\Login.cshtml",
-              "RelativeToolTip": "VF_CRIB_CREDITINFO.Presentation\\Views\\User\\Login.cshtml",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAAAMAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-25T08:23:55.575Z",
+              "DocumentIndex": 3,
+              "Title": "UserModel.cs",
+              "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Data\\Models\\UserModel.cs",
+              "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Data\\Models\\UserModel.cs",
+              "ToolTip": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Data\\Models\\UserModel.cs",
+              "RelativeToolTip": "VF_CRIB_CREDITINFO.Data\\Models\\UserModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T11:04:53.978Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "LoginViewModel.cs",
-              "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Data\\Models\\LoginViewModel.cs",
-              "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Data\\Models\\LoginViewModel.cs",
-              "ToolTip": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Data\\Models\\LoginViewModel.cs",
-              "RelativeToolTip": "VF_CRIB_CREDITINFO.Data\\Models\\LoginViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Title": "UserService.cs",
+              "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Business\\UserHandler\\UserService.cs",
+              "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Business\\UserHandler\\UserService.cs",
+              "ToolTip": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Business\\UserHandler\\UserService.cs",
+              "RelativeToolTip": "VF_CRIB_CREDITINFO.Business\\UserHandler\\UserService.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAYwCgAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T05:15:39.193Z",
+              "WhenOpened": "2026-03-25T09:23:39.245Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_ConnectionService.cs",
-              "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Business\\ConnectionHandler\\_ConnectionService.cs",
-              "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Business\\ConnectionHandler\\_ConnectionService.cs",
-              "ToolTip": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Business\\ConnectionHandler\\_ConnectionService.cs",
-              "RelativeToolTip": "VF_CRIB_CREDITINFO.Business\\ConnectionHandler\\_ConnectionService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAJAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Presentation\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Presentation\\Controllers\\UserController.cs",
+              "ToolTip": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Presentation\\Controllers\\UserController.cs",
+              "RelativeToolTip": "VF_CRIB_CREDITINFO.Presentation\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T04:40:57.493Z",
+              "WhenOpened": "2026-03-25T09:02:10.239Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ADAuthentication.cs",
               "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Business\\Authentication\\ADAuthentication.cs",
               "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Business\\Authentication\\ADAuthentication.cs",
               "ToolTip": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Business\\Authentication\\ADAuthentication.cs",
               "RelativeToolTip": "VF_CRIB_CREDITINFO.Business\\Authentication\\ADAuthentication.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAACIAAAAAAAAAAAAkwDIAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-25T04:39:10.538Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "Index.cshtml",
               "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Presentation\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Presentation\\Views\\Home\\Index.cshtml",
@@ -135,39 +147,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "APIResponse.cs",
-              "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Data\\Models\\APIResponse.cs",
-              "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Data\\Models\\APIResponse.cs",
-              "ToolTip": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Data\\Models\\APIResponse.cs",
-              "RelativeToolTip": "VF_CRIB_CREDITINFO.Data\\Models\\APIResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T03:38:27.906Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Presentation\\appsettings.json",
-              "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Presentation\\appsettings.json",
-              "ToolTip": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Presentation\\appsettings.json",
-              "RelativeToolTip": "VF_CRIB_CREDITINFO.Presentation\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-23T08:39:39.888Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Presentation\\Program.cs",
               "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Presentation\\Program.cs",
               "ToolTip": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Presentation\\Program.cs",
               "RelativeToolTip": "VF_CRIB_CREDITINFO.Presentation\\Program.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAABgAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-25T04:24:19.53Z",
               "EditorCaption": ""
@@ -175,6 +161,84 @@
             {
               "$type": "Document",
               "DocumentIndex": 7,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Business\\UserHandler\\IUserService.cs",
+              "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Business\\UserHandler\\IUserService.cs",
+              "ToolTip": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Business\\UserHandler\\IUserService.cs",
+              "RelativeToolTip": "VF_CRIB_CREDITINFO.Business\\UserHandler\\IUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAwAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T09:23:50.249Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DapperContext.cs",
+              "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Data\\Context\\DapperContext.cs",
+              "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Data\\Context\\DapperContext.cs",
+              "ToolTip": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Data\\Context\\DapperContext.cs",
+              "RelativeToolTip": "VF_CRIB_CREDITINFO.Data\\Context\\DapperContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T03:28:40.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Presentation\\appsettings.json",
+              "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Presentation\\appsettings.json",
+              "ToolTip": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Presentation\\appsettings.json",
+              "RelativeToolTip": "VF_CRIB_CREDITINFO.Presentation\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-23T08:39:39.888Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_ConnectionService.cs",
+              "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Business\\ConnectionHandler\\_ConnectionService.cs",
+              "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Business\\ConnectionHandler\\_ConnectionService.cs",
+              "ToolTip": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Business\\ConnectionHandler\\_ConnectionService.cs",
+              "RelativeToolTip": "VF_CRIB_CREDITINFO.Business\\ConnectionHandler\\_ConnectionService.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAwwAUAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T04:40:57.493Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Presentation\\Views\\User\\Login.cshtml",
+              "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Presentation\\Views\\User\\Login.cshtml",
+              "ToolTip": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Presentation\\Views\\User\\Login.cshtml",
+              "RelativeToolTip": "VF_CRIB_CREDITINFO.Presentation\\Views\\User\\Login.cshtml",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAUwK0AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-25T08:23:55.575Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "APIResponse.cs",
+              "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Data\\Models\\APIResponse.cs",
+              "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Data\\Models\\APIResponse.cs",
+              "ToolTip": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Data\\Models\\APIResponse.cs",
+              "RelativeToolTip": "VF_CRIB_CREDITINFO.Data\\Models\\APIResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T03:38:27.906Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "ADUserModel.cs",
               "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Data\\Models\\ADUserModel.cs",
               "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Data\\Models\\ADUserModel.cs",
@@ -187,20 +251,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DapperContext.cs",
-              "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Data\\Context\\DapperContext.cs",
-              "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Data\\Context\\DapperContext.cs",
-              "ToolTip": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Data\\Context\\DapperContext.cs",
-              "RelativeToolTip": "VF_CRIB_CREDITINFO.Data\\Context\\DapperContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T03:28:40.08Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "H:\\CRIB New\\github\\VF_CRIB_INFO\\VF_CRIB_CREDITINFO.Presentation\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "VF_CRIB_CREDITINFO.Presentation\\Views\\Shared\\_Layout.cshtml",
