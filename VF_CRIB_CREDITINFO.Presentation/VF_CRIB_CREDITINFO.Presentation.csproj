@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\VF_CRIB_CREDITINFO.Data\VF_CRIB_CREDITINFO.Data.csproj" />
+  </ItemGroup>
+
 </Project>
