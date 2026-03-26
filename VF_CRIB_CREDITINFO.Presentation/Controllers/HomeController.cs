@@ -23,6 +23,11 @@ namespace VF_CRIB_CREDITINFO.Presentation.Controllers
             return View();
         }
 
+        public ActionResult SearchCRIB()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
