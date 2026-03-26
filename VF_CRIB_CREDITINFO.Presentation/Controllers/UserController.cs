@@ -3,10 +3,11 @@ using Microsoft.Extensions.Configuration;
 using System.Security;
 using System.Text.Json;
 using VF_CRIB_CREDITINFO.Business.UserHandler;
+using VF_CRIB_CREDITINFO.Presentation.Filters;
 
 namespace VF_CRIB_CREDITINFO.Controllers
 {
-    //[SessionCheck]
+    [SessionCheck]
     public class UserController : Controller
     {
         private readonly IUserService _userService;
@@ -23,9 +24,10 @@ namespace VF_CRIB_CREDITINFO.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult Login()
         {
-            //HttpContext.Session.Clear();
+            HttpContext.Session.Clear();
             return View();
         }
 
