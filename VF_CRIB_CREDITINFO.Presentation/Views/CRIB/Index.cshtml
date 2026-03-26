@@ -1,0 +1,145 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box">
+            <h4 class="page-title">Search CRIB</h4>
+        </div>
+    </div>
+</div>
+<!-- end page title -->
+<!-- Start Content-->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-7">
+                        <label for="example-select" class="form-label">Search Type</label>
+
+                        <div class="btn-group w-100" role="group">
+                            <input type="radio" class="btn-check" name="tabs" id="IndividualSearch" autocomplete="off" checked>
+                            <label class="btn btn-outline-info" for="IndividualSearch">Individual Search</label>
+
+                            <input type="radio" class="btn-check" name="tabs" id="CompanySearch" autocomplete="off">
+                            <label class="btn btn-outline-info" for="CompanySearch">Company Search</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:3%;">
+                    <div class="col-sm-3">
+                        <label for="example-select" class="form-label"> Number Type</label>
+                        <select class="form-select" id="NumberType">
+                            <option>NIC</option>
+                            <option>Passport Number</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label for="simpleinput" class="form-label"> Number</label>
+                        <input type="text" id="Number" class="form-control">
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label for="simpleinput" class="form-label">&nbsp;</label><br>
+                        <button class="btn btn-dark" id="SearchBtn"><lable class="dripicons-search"></lable> Search</button>
+                    </div>
+                </div>
+
+                <hr style="border:none; height:2px; background:linear-gradient(to right, transparent, #0d6efd, transparent);">
+
+
+                <div class="row" style="margin-top:5%;">
+                    <div class="col-lg-6">
+                        <p class="mb-1 fw-bold text-muted"> Application Number :</p>
+                        <p class="text-muted font-14"> 100345 </p>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <p class="mb-1 fw-bold text-muted"> Full Name :</p>
+                        <p class="text-muted font-14"> Lakshan Senanayaka </p>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <p class="mb-1 fw-bold text-muted"> CreditFacility Type :</p>
+                        <p class="text-muted font-14"> Installment </p>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <p class="mb-1 fw-bold text-muted"> CreditFacility Amount :</p>
+                        <p class="text-muted font-14"> EUR 1000 </p>
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-top:5%;">
+                    <div class="col-lg-6">
+                        <button class="btn btn-info" type="submit"> <lable class="dripicons-arrow-down"></lable> Download Report</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/assets/lib/jquery/dist/jquery.min.js"></script>
+
+<script>
+    function changeNumberType() {
+        document.getElementById("NumberType").innerHTML =
+            document.getElementById("IndividualSearch").checked
+            ? '<option>NIC</option><option>Passport Number</option>'
+            : '<option>Business Registration Number</option>';
+    }
+
+    window.onload = function () {
+        document.getElementById("IndividualSearch").addEventListener("change", changeNumberType);
+        document.getElementById("CompanySearch").addEventListener("change", changeNumberType);
+
+        changeNumberType();
+    };
+
+
+
+     $("#SearchBtn").click(function () {
+        var numberType = $("#NumberType").val();
+        var number = $("#Number").val();
+        var isIndividual = $("#IndividualSearch").is(":checked");
+
+        $.ajax({
+            url: '/SearchCRIB/SearchData',
+            type: 'POST',
+            data: {
+                numberType: numberType,
+                number: number,
+                isIndividual: isIndividual
+            },
+            success: function (res) {
+
+                $("#AppNo").text(res.applicationNumber);
+                $("#FullName").text(res.fullName);
+                $("#FacilityType").text(res.creditFacilityType);
+                $("#Amount").text(res.creditFacilityAmount);
+
+            },
+            error: function () {
+                alert("Error calling API");
+            }
+        });
+
+    });
+
+
+</script>
+
+
