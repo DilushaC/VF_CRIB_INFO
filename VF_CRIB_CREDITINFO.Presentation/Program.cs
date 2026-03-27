@@ -1,5 +1,6 @@
 using VF_CRIB_CREDITINFO.Business.Authentication;
 using VF_CRIB_CREDITINFO.Business.ConnectionHandler;
+using VF_CRIB_CREDITINFO.Business.CRIBHandler;
 using VF_CRIB_CREDITINFO.Business.UserHandler;
 using VF_CRIB_CREDITINFO.Data.Context;
 
@@ -9,6 +10,7 @@ builder.Services.AddScoped<DapperContext>();
 builder.Services.AddScoped<_ConnectionService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ADAuthentication>();
+builder.Services.AddHttpClient<ITokenService, TokenService>();
 
 // Add session services
 builder.Services.AddDistributedMemoryCache();
