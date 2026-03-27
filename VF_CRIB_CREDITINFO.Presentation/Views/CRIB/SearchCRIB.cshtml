@@ -107,30 +107,41 @@
         document.getElementById("CompanySearch").addEventListener("change", changeNumberType);
 
         changeNumberType();
-    };
+    };    
 
 
+        $("#SearchBtn").click(function () {
 
-     $("#SearchBtn").click(function () {
         var numberType = $("#NumberType").val();
         var number = $("#Number").val();
         var isIndividual = $("#IndividualSearch").is(":checked");
 
+        if (!number) {
+            alert("Please enter number");
+            return;
+        }
+
         $.ajax({
-            url: '/SearchCRIB/SearchData',
+            url: '/CRIB/SearchData',
             type: 'POST',
             data: {
                 numberType: numberType,
                 number: number,
                 isIndividual: isIndividual
             },
+            beforeSend: function () {
+                $("#SearchBtn").text("Searching...");
+            },
             success: function (res) {
 
-                $("#AppNo").text(res.applicationNumber);
-                $("#FullName").text(res.fullName);
-                $("#FacilityType").text(res.creditFacilityType);
-                $("#Amount").text(res.creditFacilityAmount);
+                $("#AppNo").text(res.applicationNumber || "-");
+                $("#FullName").text(res.fullName || "-");
+                $("#FacilityType").text(res.creditFacilityType || "-");
+                $("#Amount").text(res.creditFacilityAmount || "-");
 
+            },
+            complete: function () {
+                $("#SearchBtn").text("Search");
             },
             error: function () {
                 alert("Error calling API");
