@@ -6,10 +6,17 @@ namespace VF_CRIB_CREDITINFO.Presentation.Controllers
 {
     public class CRIBController : Controller
     {
+        private readonly ITokenService _tokenService;
+        private readonly ICRIBService _CRIBService;
 
+        public CRIBController(ITokenService tokenService, ICRIBService CRIBService)
         {
+            _tokenService = tokenService;
+            _CRIBService = CRIBService;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
             const string serviceURL = "https://identity.cbsnext.domain/connect/token/";
             string username = "USERNAME";
@@ -32,6 +39,7 @@ namespace VF_CRIB_CREDITINFO.Presentation.Controllers
         {
             string token = "TOKEN_Number";
 
+            var result = await _CRIBService.SearchCRIBData(
                 numberType,
                 number,
                 isIndividual,
@@ -40,6 +48,5 @@ namespace VF_CRIB_CREDITINFO.Presentation.Controllers
 
             return Json(result);
         }
-
     }
 }
