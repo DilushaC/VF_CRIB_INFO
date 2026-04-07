@@ -1,29 +1,37 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VF_CRIB_CREDITINFO.Business.CRIBHandler;
 using VF_CRIB_CREDITINFO.Business.SearchCRIBHandler;
 
 namespace VF_CRIB_CREDITINFO.Presentation.Controllers
 {
     public class CRIBController : Controller
     {
-        private readonly ISearchCRIBService _SearchCRIBService;
 
-        public CRIBController(ISearchCRIBService SearchCRIBService)
         {
-            _SearchCRIBService = SearchCRIBService;
         }
 
-        public IActionResult SearchCRIB()
         {
+            const string serviceURL = "https://identity.cbsnext.domain/connect/token/";
+            string username = "USERNAME";
+            string password = "PASSWORD";
+
+            var tokenData = await _tokenService.GetTokenDataAsync(
+                serviceURL,
+                username,
+                password
+            );
+
+            ViewBag.Token = tokenData;
+
             return View();
-        }       
-      
+        }
+
 
         [HttpPost]
         public async Task<JsonResult> SearchData(string numberType, string number, bool isIndividual)
         {
-            string token = "TOKEN_Number"; 
+            string token = "TOKEN_Number";
 
-            var result = await _SearchCRIBService.SearchCRIBData(
                 numberType,
                 number,
                 isIndividual,
