@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36327.8 d17.14
+VisualStudioVersion = 17.14.36327.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VF_CRIB_CREDITINFO.Presentation", "VF_CRIB_CREDITINFO.Presentation\VF_CRIB_CREDITINFO.Presentation.csproj", "{CB0980A3-0A58-443D-B2EF-15B42AF8848E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VF_CRIB_CREDITINFO.Data", "VF_CRIB_CREDITINFO.Data\VF_CRIB_CREDITINFO.Data.csproj", "{92C91FF3-5370-4F92-B48F-A0351CCBB078}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VF_CRIB_CREDITINFO.Business", "VF_CRIB_CREDITINFO.Business\VF_CRIB_CREDITINFO.Business.csproj", "{BDE23E39-0C4A-4FFC-8A23-5A620B4B2A89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{CB0980A3-0A58-443D-B2EF-15B42AF8848E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB0980A3-0A58-443D-B2EF-15B42AF8848E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB0980A3-0A58-443D-B2EF-15B42AF8848E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92C91FF3-5370-4F92-B48F-A0351CCBB078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92C91FF3-5370-4F92-B48F-A0351CCBB078}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92C91FF3-5370-4F92-B48F-A0351CCBB078}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92C91FF3-5370-4F92-B48F-A0351CCBB078}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDE23E39-0C4A-4FFC-8A23-5A620B4B2A89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDE23E39-0C4A-4FFC-8A23-5A620B4B2A89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDE23E39-0C4A-4FFC-8A23-5A620B4B2A89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDE23E39-0C4A-4FFC-8A23-5A620B4B2A89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
