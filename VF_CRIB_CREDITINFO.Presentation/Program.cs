@@ -3,6 +3,9 @@ using VF_CRIB_CREDITINFO.Business.ConnectionHandler;
 using VF_CRIB_CREDITINFO.Business.CRIBHandler;
 using VF_CRIB_CREDITINFO.Business.UserHandler;
 using VF_CRIB_CREDITINFO.Data.Context;
+using log4net;
+using log4net.Config;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +30,10 @@ builder.Services.AddHttpContextAccessor();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//adding logger
+var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
 
 var app = builder.Build();
 
