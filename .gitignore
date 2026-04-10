@@ -30,6 +30,12 @@ v17/
 *.rsuser
 *.sln.docstates
 
+# Visual Studio
+.vs/
+*/.vs/
+**/.vs/
+.vs/*
+
 # VS Code
 .vscode/*
 !.vscode/settings.json
