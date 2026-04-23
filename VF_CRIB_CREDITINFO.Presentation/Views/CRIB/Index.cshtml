@@ -3,8 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<!-- start page title -->
+<!-- Page Title -->
 <div class="row">
     <div class="col-12">
         <div class="page-title-box">
@@ -12,85 +11,118 @@
         </div>
     </div>
 </div>
-<!-- end page title -->
-<!-- Start Content-->
+
+<!-- Content -->
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
 
+                <!-- Search Type -->
                 <div class="row">
                     <div class="col-7">
-                        <label for="example-select" class="form-label">Search Type</label>
+                        <label class="form-label">Search Type</label>
 
                         <div class="btn-group w-100" role="group">
-                            <input type="radio" class="btn-check" name="tabs" id="IndividualSearch" autocomplete="off" checked>
+                            <input type="radio" class="btn-check" name="tabs" id="IndividualSearch" checked>
                             <label class="btn btn-outline-info" for="IndividualSearch">Individual Search</label>
 
-                            <input type="radio" class="btn-check" name="tabs" id="CompanySearch" autocomplete="off">
+                            <input type="radio" class="btn-check" name="tabs" id="CompanySearch">
                             <label class="btn btn-outline-info" for="CompanySearch">Company Search</label>
                         </div>
                     </div>
                 </div>
 
+                <!-- Inputs -->
                 <div class="row" style="margin-top:3%;">
+
+                    <!-- Number Type + Gender / Company -->
                     <div class="col-sm-3">
-                        <label for="example-select" class="form-label"> Number Type</label>
+                        <label class="form-label">Number Type</label>
                         <select class="form-select" id="NumberType">
                             <option>NIC</option>
                             <option>Passport Number</option>
                         </select>
+
+                        <!-- Gender -->
+                        <div id="GenderDiv">
+                            <label class="form-label mt-2">Gender</label>
+                            <select class="form-select" id="GenderInput">
+                                <option value="">-- Select --</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+
+                        <!-- Company Name -->
+                        <div id="CompanyNameDiv" style="display:none;">
+                            <label class="form-label mt-2">Company Name</label>
+                            <input type="text" id="CompanyNameInput" class="form-control">
+                        </div>
                     </div>
 
+                    <!-- Number + Full Name -->
                     <div class="col-sm-4">
-                        <label for="simpleinput" class="form-label"> Number</label>
+                        <label class="form-label">Number</label>
                         <input type="text" id="Number" class="form-control">
+
+                        <div id="FullNameDiv">
+                            <label class="form-label mt-2">Full Name</label>
+                            <input type="text" id="FullNameInput" class="form-control">
+                        </div>
                     </div>
 
-                    <div class="col-sm-4">
-                        <label for="simpleinput" class="form-label">&nbsp;</label><br>
-                        <button class="btn btn-dark" id="SearchBtn"><lable class="dripicons-search"></lable> Search</button>
+                </div>
+
+                <!-- Search Button -->
+                <div class="row" style="margin-top:20px;">
+                    <div class="col-12 text-start">
+                        <button class="btn btn-dark" id="SearchBtn">
+                            <span class="dripicons-search"></span> Search
+                        </button>
                     </div>
                 </div>
 
                 <hr style="border:none; height:2px; background:linear-gradient(to right, transparent, #0d6efd, transparent);">
 
-
+                <!-- Result Section -->
                 <div class="row" style="margin-top:5%;">
+
                     <div class="col-lg-6">
-                        <p class="mb-1 fw-bold text-muted"> Application Number :</p>
-                        <p class="text-muted font-14"> 100345 </p>
+                        <p class="mb-1 fw-bold text-muted">Application Number :</p>
+                        <p class="text-muted font-14" id="AppNo"></p>
                     </div>
 
                     <div class="col-lg-6">
-                        <p class="mb-1 fw-bold text-muted"> Full Name :</p>
-                        <p class="text-muted font-14"> Lakshan Senanayaka </p>
+                        <p class="mb-1 fw-bold text-muted">Full Name :</p>
+                        <p class="text-muted font-14" id="ResultFullName"></p>
                     </div>
 
                     <div class="col-lg-6">
-                        <p class="mb-1 fw-bold text-muted"> CreditFacility Type :</p>
-                        <p class="text-muted font-14"> Installment </p>
+                        <p class="mb-1 fw-bold text-muted">Credit Facility Type :</p>
+                        <p class="text-muted font-14" id="FacilityType"></p>
                     </div>
 
                     <div class="col-lg-6">
-                        <p class="mb-1 fw-bold text-muted"> CreditFacility Amount :</p>
-                        <p class="text-muted font-14"> EUR 1000 </p>
+                        <p class="mb-1 fw-bold text-muted">Credit Facility Amount :</p>
+                        <p class="text-muted font-14" id="Amount"></p>
                     </div>
+
                 </div>
 
-
+                <!-- Download -->
                 <div class="row" style="margin-top:5%;">
                     <div class="col-lg-6">
-                        <button class="btn btn-info" type="submit"> <lable class="dripicons-arrow-down"></lable> Download Report</button>
+                        <button class="btn btn-info">
+                            <span class="dripicons-arrow-down"></span> Download Report
+                        </button>
                     </div>
                 </div>
-
 
             </div>
         </div>
     </div>
 </div>
-
 
 <script src="~/assets/lib/jquery/dist/jquery.min.js"></script>
 
@@ -98,23 +130,48 @@
     function changeNumberType() {
         document.getElementById("NumberType").innerHTML =
             document.getElementById("IndividualSearch").checked
-            ? '<option>NIC</option><option>Passport Number</option>'
-            : '<option>Business Registration Number</option>';
+                ? '<option>NIC</option><option>Passport Number</option>'
+                : '<option>Business Registration Number</option>';
+    }
+
+    function toggleSearchMode() {
+        var isIndividual = $("#IndividualSearch").is(":checked");
+
+        if (isIndividual) {
+            $("#GenderDiv").show();
+            $("#FullNameDiv").show();
+            $("#CompanyNameDiv").hide();
+        } else {
+            $("#GenderDiv").hide();
+            $("#FullNameDiv").hide();
+            $("#CompanyNameDiv").show();
+        }
     }
 
     window.onload = function () {
-        document.getElementById("IndividualSearch").addEventListener("change", changeNumberType);
-        document.getElementById("CompanySearch").addEventListener("change", changeNumberType);
+        $("#IndividualSearch").change(function () {
+            changeNumberType();
+            toggleSearchMode();
+        });
+
+        $("#CompanySearch").change(function () {
+            changeNumberType();
+            toggleSearchMode();
+        });
 
         changeNumberType();
+        toggleSearchMode();
     };
 
+    $("#SearchBtn").click(function () {
 
-
-     $("#SearchBtn").click(function () {
         var numberType = $("#NumberType").val();
         var number = $("#Number").val();
         var isIndividual = $("#IndividualSearch").is(":checked");
+
+        var fullName = isIndividual ? $("#FullNameInput").val() : "";
+        var gender = isIndividual ? $("#GenderInput").val() : "";
+        var companyName = !isIndividual ? $("#CompanyNameInput").val() : "";
 
         $.ajax({
             url: '/SearchCRIB/SearchData',
@@ -122,15 +179,23 @@
             data: {
                 numberType: numberType,
                 number: number,
+                fullName: fullName,
+                gender: gender,
+                companyName: companyName,
                 isIndividual: isIndividual
             },
             success: function (res) {
 
                 $("#AppNo").text(res.applicationNumber);
-                $("#FullName").text(res.fullName);
+                $("#ResultFullName").text(res.fullName || res.companyName);
                 $("#FacilityType").text(res.creditFacilityType);
-                $("#Amount").text(res.creditFacilityAmount);
 
+                if (res.creditFacilityAmount) {
+                    $("#Amount").text(
+                        res.creditFacilityAmount.currency + " " +
+                        res.creditFacilityAmount.value
+                    );
+                }
             },
             error: function () {
                 alert("Error calling API");
@@ -138,8 +203,4 @@
         });
 
     });
-
-
 </script>
-
-
