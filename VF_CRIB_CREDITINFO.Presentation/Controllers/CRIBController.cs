@@ -15,21 +15,8 @@ namespace VF_CRIB_CREDITINFO.Presentation.Controllers
             _CRIBService = CRIBService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            const string serviceURL = "https://identity.cbsnext.domain/connect/token/";
-            string username = "USERNAME";
-            string password = "PASSWORD";
-
-            var tokenData = await _tokenService.GetTokenDataAsync(
-                serviceURL,
-                username,
-                password
-            );
-
-            ViewBag.Token = tokenData;
-
             return View();
         }
 

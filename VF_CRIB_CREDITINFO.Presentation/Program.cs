@@ -6,12 +6,14 @@ using VF_CRIB_CREDITINFO.Data.Context;
 using log4net;
 using log4net.Config;
 using System.Reflection;
+using VF_CRIB_CREDITINFO.Business.SearchCRIBHandler;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<DapperContext>();
 builder.Services.AddScoped<_ConnectionService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ICRIBService, CRIBService>();
 builder.Services.AddScoped<ADAuthentication>();
 builder.Services.AddHttpClient<ITokenService, TokenService>();
 

@@ -32,11 +32,11 @@ namespace VF_CRIB_CREDITINFO.Business.UserHandler
             // 2. Get User
             const string userQuery = @"
                 SELECT *
-                FROM [dbo].[User]
-                WHERE EPFNo = @EPFNo AND Active = 1";
+                FROM [dbo].[CribSystemUser]
+                WHERE EmployeeId = @EmployeeId AND IsActive = 1";
 
             var userParams = new DynamicParameters();
-            userParams.Add("@EPFNo", username);
+            userParams.Add("@EmployeeId", username);
 
             var userData = _connectionService.ReturnWithPara(userQuery, userParams);
             if (userData == null || userData.Rows.Count == 0)
