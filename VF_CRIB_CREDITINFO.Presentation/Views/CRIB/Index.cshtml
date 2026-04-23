@@ -40,19 +40,30 @@
                     <div class="col-sm-3">
                         <label class="form-label">Number Type</label>
                         <select class="form-select" id="NumberType">
-                            <option>NIC</option>
-                            <option>Passport Number</option>
+                            <option value=""></option> <!-- ✅ important -->
+                            <option value="NIC">NIC</option>
+                            <option value="Passport">Passport Number</option>
                         </select>
 
                         <!-- Gender -->
                         <div id="GenderDiv">
                             <label class="form-label mt-2">Gender</label>
-                            <select class="form-select" id="GenderInput">
-                                <option value="">-- Select --</option>
+@*                             <select class="form-select" id="GenderType">
+                                <option value=""></option> <!-- ✅ important -->
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
+                            </select> *@
+                            <select id="GenderSelectId"
+                                    class="form-control select2 round"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="right"
+                                    title="Parent Gender"
+                                    required
+                                    data-placeholder="Select Gender"
+                                <option value="">Select Gender</option>
                             </select>
                         </div>
+
 
                         <!-- Company Name -->
                         <div id="CompanyNameDiv" style="display:none;">
@@ -72,6 +83,18 @@
                         </div>
                     </div>
 
+                </div>
+
+                <!-- Consent Switch -->
+                <div class="row" style="margin-top:20px;">
+                    <div class="col-12">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="ConsentSwitch">
+                            <label class="form-check-label" for="ConsentSwitch">
+                                I confirm that customer consent has been obtained
+                            </label>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Search Button -->
@@ -125,14 +148,37 @@
 </div>
 
 <script src="~/assets/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/assets/js/sweetalert2.all.min.js"></script>
+<script src="~/assets/js/select2/js/select2.min.js"></script>
 
 <script>
     function changeNumberType() {
-        document.getElementById("NumberType").innerHTML =
-            document.getElementById("IndividualSearch").checked
-                ? '<option>NIC</option><option>Passport Number</option>'
-                : '<option>Business Registration Number</option>';
+
+        var select = $("#NumberType");
+
+        if (select.hasClass("select2-hidden-accessible")) {
+            select.select2('destroy');
+        }
+
+        select.html(
+            $("#IndividualSearch").is(":checked")
+                ? '<option></option><option>NIC</option><option>Passport Number</option>'
+                : '<option></option><option>Business Registration Number</option>'
+        );
+
+        select.select2({
+            placeholder: "Select Number Type",
+            allowClear: true,
+            width: '100%'
+        });
     }
+
+    $("#GenderSelectId").select2({
+        placeholder: "Select Gender Type",
+        allowClear: true,
+        width: '100%'
+    });
+
 
     function toggleSearchMode() {
         var isIndividual = $("#IndividualSearch").is(":checked");
@@ -168,10 +214,22 @@
         var numberType = $("#NumberType").val();
         var number = $("#Number").val();
         var isIndividual = $("#IndividualSearch").is(":checked");
+        var consentGiven = $("#ConsentSwitch").is(":checked");
 
         var fullName = isIndividual ? $("#FullNameInput").val() : "";
         var gender = isIndividual ? $("#GenderInput").val() : "";
         var companyName = !isIndividual ? $("#CompanyNameInput").val() : "";
+
+        // 🚨 Consent validation
+        if (!consentGiven) {
+            alert("Please confirm customer consent before searching.");
+            return;
+        }
+
+        if (!number) {
+            alert("Please enter a number");
+            return;
+        }
 
         $.ajax({
             url: '/SearchCRIB/SearchData',
@@ -182,6 +240,7 @@
                 fullName: fullName,
                 gender: gender,
                 companyName: companyName,
+                consentGiven: consentGiven, // 👈 added
                 isIndividual: isIndividual
             },
             success: function (res) {
