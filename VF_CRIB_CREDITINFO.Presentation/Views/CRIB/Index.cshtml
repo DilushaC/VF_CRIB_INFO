@@ -39,28 +39,17 @@
                     <!-- Number Type + Gender / Company -->
                     <div class="col-sm-3">
                         <label class="form-label">Number Type</label>
-                        <select class="form-select" id="NumberType">
-                            <option value=""></option> <!-- ✅ important -->
+                        <select id="NumberType" class="form-select">
                             <option value="NIC">NIC</option>
-                            <option value="Passport">Passport Number</option>
+                            <option value="Passport">Passport</option>
                         </select>
 
                         <!-- Gender -->
                         <div id="GenderDiv">
                             <label class="form-label mt-2">Gender</label>
-@*                             <select class="form-select" id="GenderType">
-                                <option value=""></option> <!-- ✅ important -->
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                            </select> *@
-                            <select id="GenderSelectId"
-                                    class="form-control select2 round"
-                                    data-bs-toggle="tooltip"
-                                    data-bs-placement="right"
-                                    title="Parent Gender"
-                                    required
-                                    data-placeholder="Select Gender"
-                                <option value="">Select Gender</option>
+                            <select id="Gender" class="form-select">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
                             </select>
                         </div>
 
@@ -152,113 +141,126 @@
 <script src="~/assets/js/select2/js/select2.min.js"></script>
 
 <script>
-    function changeNumberType() {
+    $(document).ready(function () {
 
-        var select = $("#NumberType");
+        // ✅ Initialize Select2 properly
+        $("#Gender").select2({
+            placeholder: "Select Gender",
+            allowClear: true,
+            width: '100%'
+        });
 
-        if (select.hasClass("select2-hidden-accessible")) {
-            select.select2('destroy');
-        }
-
-        select.html(
-            $("#IndividualSearch").is(":checked")
-                ? '<option></option><option>NIC</option><option>Passport Number</option>'
-                : '<option></option><option>Business Registration Number</option>'
-        );
-
-        select.select2({
+        $("#NumberType").select2({
             placeholder: "Select Number Type",
             allowClear: true,
             width: '100%'
         });
-    }
 
-    $("#GenderSelectId").select2({
-        placeholder: "Select Gender Type",
-        allowClear: true,
-        width: '100%'
-    });
+        // ✅ Change Number Type dynamically
+        function changeNumberType() {
+            var select = $("#NumberType");
 
+            if (select.hasClass("select2-hidden-accessible")) {
+                select.select2('destroy');
+            }
 
-    function toggleSearchMode() {
-        var isIndividual = $("#IndividualSearch").is(":checked");
+            if ($("#IndividualSearch").is(":checked")) {
+                select.html(`
+                    <option></option>
+                    <option value="NIC">NIC</option>
+                    <option value="Passport">Passport</option>
+                `);
+            } else {
+                select.html(`
+                    <option></option>
+                    <option value="BRN">Business Registration Number</option>
+                `);
+            }
 
-        if (isIndividual) {
-            $("#GenderDiv").show();
-            $("#FullNameDiv").show();
-            $("#CompanyNameDiv").hide();
-        } else {
-            $("#GenderDiv").hide();
-            $("#FullNameDiv").hide();
-            $("#CompanyNameDiv").show();
+            select.select2({
+                placeholder: "Select Number Type",
+                allowClear: true,
+                width: '100%'
+            });
         }
-    }
 
-    window.onload = function () {
-        $("#IndividualSearch").change(function () {
+        // ✅ Toggle UI
+        function toggleSearchMode() {
+            var isIndividual = $("#IndividualSearch").is(":checked");
+
+            if (isIndividual) {
+                $("#GenderDiv").show();
+                $("#FullNameDiv").show();
+                $("#CompanyNameDiv").hide();
+            } else {
+                $("#GenderDiv").hide();
+                $("#FullNameDiv").hide();
+                $("#CompanyNameDiv").show();
+            }
+        }
+
+        // ✅ FIXED radio binding (your name was wrong before)
+        $("input[name='tabs']").on("change", function () {
             changeNumberType();
             toggleSearchMode();
         });
 
-        $("#CompanySearch").change(function () {
-            changeNumberType();
-            toggleSearchMode();
-        });
-
+        // ✅ Initial load
         changeNumberType();
         toggleSearchMode();
-    };
 
-    $("#SearchBtn").click(function () {
+        // ✅ Search button
+        $("#SearchBtn").click(function () {
 
-        var numberType = $("#NumberType").val();
-        var number = $("#Number").val();
-        var isIndividual = $("#IndividualSearch").is(":checked");
-        var consentGiven = $("#ConsentSwitch").is(":checked");
+            var numberType = $("#NumberType").val();
+            var number = $("#Number").val();
+            var isIndividual = $("#IndividualSearch").is(":checked");
+            var consentGiven = $("#ConsentSwitch").is(":checked");
 
-        var fullName = isIndividual ? $("#FullNameInput").val() : "";
-        var gender = isIndividual ? $("#GenderInput").val() : "";
-        var companyName = !isIndividual ? $("#CompanyNameInput").val() : "";
+            var fullName = isIndividual ? $("#FullNameInput").val() : "";
+            var gender = isIndividual ? $("#Gender").val() : ""; // ✅ FIXED
+            var companyName = !isIndividual ? $("#CompanyNameInput").val() : "";
 
-        // 🚨 Consent validation
-        if (!consentGiven) {
-            alert("Please confirm customer consent before searching.");
-            return;
-        }
-
-        if (!number) {
-            alert("Please enter a number");
-            return;
-        }
-
-        $.ajax({
-            url: '/SearchCRIB/SearchData',
-            type: 'POST',
-            data: {
-                numberType: numberType,
-                number: number,
-                fullName: fullName,
-                gender: gender,
-                companyName: companyName,
-                consentGiven: consentGiven, // 👈 added
-                isIndividual: isIndividual
-            },
-            success: function (res) {
-
-                $("#AppNo").text(res.applicationNumber);
-                $("#ResultFullName").text(res.fullName || res.companyName);
-                $("#FacilityType").text(res.creditFacilityType);
-
-                if (res.creditFacilityAmount) {
-                    $("#Amount").text(
-                        res.creditFacilityAmount.currency + " " +
-                        res.creditFacilityAmount.value
-                    );
-                }
-            },
-            error: function () {
-                alert("Error calling API");
+            if (!consentGiven) {
+                alert("Please confirm customer consent before searching.");
+                return;
             }
+
+            if (!number) {
+                alert("Please enter a number");
+                return;
+            }
+
+            $.ajax({
+                url: '/SearchCRIB/SearchData',
+                type: 'POST',
+                data: {
+                    numberType,
+                    number,
+                    fullName,
+                    gender,
+                    companyName,
+                    consentGiven,
+                    isIndividual
+                },
+                success: function (res) {
+
+                    $("#AppNo").text(res.applicationNumber);
+                    $("#ResultFullName").text(res.fullName || res.companyName);
+                    $("#FacilityType").text(res.creditFacilityType);
+
+                    if (res.creditFacilityAmount) {
+                        $("#Amount").text(
+                            res.creditFacilityAmount.currency + " " +
+                            res.creditFacilityAmount.value
+                        );
+                    }
+                },
+                error: function () {
+                    alert("Error calling API");
+                }
+            });
+
         });
 
     });
