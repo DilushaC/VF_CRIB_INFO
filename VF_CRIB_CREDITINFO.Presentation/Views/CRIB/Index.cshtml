@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Search CRIB";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -38,16 +38,20 @@
 
                     <!-- Number Type + Gender / Company -->
                     <div class="col-sm-3">
-                        <label class="form-label">Number Type</label>
-                        <select id="NumberType" class="form-select">
-                            <option value="NIC">NIC</option>
-                            <option value="Passport">Passport</option>
-                        </select>
+                        <div id="NumberTypeDiv">
+                            <label class="form-label">Number Type</label>
+                            <select id="NumberType" class="form-select">
+                                <option></option>
+                                <option value="NIC">NIC</option>
+                                <option value="Passport">Passport</option>
+                            </select>
+                        </div>
 
                         <!-- Gender -->
                         <div id="GenderDiv">
                             <label class="form-label mt-2">Gender</label>
                             <select id="Gender" class="form-select">
+                                <option></option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                             </select>
@@ -73,10 +77,24 @@
                     </div>
 
                 </div>
+                <div class="row" style="margin-top:20px;">
+                    <div class="col-md-6" id="InquiryReasonDiv">
+                        <label class="form-label mt-2">Reason of Inquiry</label>
+                        <select id="InquiryReason" class="form-select">
+                            <option></option>
+                            <option value="1">EvaluatingOfABorrowerForANewCreditFacility</option>
+                            <option value="2">ReviewAsAGuarantorForANewCreditFacility</option>
+                            <option value="3">MonitoringAndReviewingOfAnExistingBorrower</option>
+                            <option value="4">OpeningOfACurrentAccount</option>
+                            <option value="5">ReviewAsAPartnerOrProprietorForANewCreditFacility</option>
+                            <option value="6">ReviewAsADirectorForANewCreditFacility</option>
+                        </select>
+                    </div>
+                </div>
 
                 <!-- Consent Switch -->
                 <div class="row" style="margin-top:20px;">
-                    <div class="col-12">
+                    <div class="col-md-4">
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="ConsentSwitch">
                             <label class="form-check-label" for="ConsentSwitch">
@@ -143,9 +161,14 @@
 <script>
     $(document).ready(function () {
 
-        // ✅ Initialize Select2 properly
         $("#Gender").select2({
             placeholder: "Select Gender",
+            allowClear: true,
+            width: '100%'
+        });
+
+        $("#InquiryReason").select2({
+            placeholder: "Select Reason",
             allowClear: true,
             width: '100%'
         });
@@ -156,7 +179,6 @@
             width: '100%'
         });
 
-        // ✅ Change Number Type dynamically
         function changeNumberType() {
             var select = $("#NumberType");
 
@@ -184,7 +206,6 @@
             });
         }
 
-        // ✅ Toggle UI
         function toggleSearchMode() {
             var isIndividual = $("#IndividualSearch").is(":checked");
 
@@ -199,17 +220,14 @@
             }
         }
 
-        // ✅ FIXED radio binding (your name was wrong before)
         $("input[name='tabs']").on("change", function () {
             changeNumberType();
             toggleSearchMode();
         });
 
-        // ✅ Initial load
         changeNumberType();
         toggleSearchMode();
 
-        // ✅ Search button
         $("#SearchBtn").click(function () {
 
             var numberType = $("#NumberType").val();
@@ -218,16 +236,48 @@
             var consentGiven = $("#ConsentSwitch").is(":checked");
 
             var fullName = isIndividual ? $("#FullNameInput").val() : "";
-            var gender = isIndividual ? $("#Gender").val() : ""; // ✅ FIXED
+            var gender = isIndividual ? $("#Gender").val() : "";
             var companyName = !isIndividual ? $("#CompanyNameInput").val() : "";
 
-            if (!consentGiven) {
-                alert("Please confirm customer consent before searching.");
-                return;
-            }
+            var inquiryReason = $("#InquiryReason").val();
 
-            if (!number) {
-                alert("Please enter a number");
+            if (!consentGiven || !number || !fullName || !gender || !numberType || !inquiryReason ){
+
+                let message = "";
+                let title = "";
+
+                if (!consentGiven) {
+                    title = "Consent Required";
+                    message = "Please confirm the consent is given";
+                }
+                else if (!number) {
+                    title = "Number Required";
+                    message = "Please enter the Number";
+                }
+                else if (!fullName) {
+                    title = "Full Name Required";
+                    message = "Please enter the Name";
+                }
+                else if (!gender) {
+                    title = "Gender Required";
+                    message = "Please enter the gender";
+                }
+                else if (!numberType) {
+                    title = "Number Type Required";
+                    message = "Please enter Number Type";
+                }
+                else if (!inquiryReason) {
+                    title = "Inquiry Reason Required";
+                    message = "Please enter Inquiry Reason";
+                }
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: title,
+                    text: message,
+                    confirmButtonColor: '#3085d6'
+                });
+
                 return;
             }
 
