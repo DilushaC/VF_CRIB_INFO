@@ -39,7 +39,9 @@
                     <!-- Number Type + Gender / Company -->
                     <div class="col-sm-3">
                         <div id="NumberTypeDiv">
-                            <label class="form-label">Number Type</label>
+                            <label class="form-label mt-2">
+                                Number Type <span style="color: red;">*</span>
+                            </label>
                             <select id="NumberType" class="form-select">
                                 <option></option>
                                 <option value="NIC">NIC</option>
@@ -50,7 +52,9 @@
 
                         <!-- Gender -->
                         <div id="GenderDiv">
-                            <label class="form-label mt-2">Gender</label>
+                            <label class="form-label mt-2">
+                                Gender <span style="color: red;">*</span>
+                            </label>
                             <select id="Gender" class="form-select">
                                 <option></option>
                                 <option value="male">Male</option>
@@ -61,18 +65,23 @@
 
                         <!-- Company Name -->
                         <div id="CompanyNameDiv" style="display:none;">
-                            <label class="form-label mt-2">Company Name</label>
+                            <label class="form-label mt-2">
+                                Company Name <span style="color: red;">*</span>
+                            </label>
                             <input type="text" id="CompanyNameInput" class="form-control">
                         </div>
                     </div>
 
                     <!-- Number + Full Name -->
                     <div class="col-sm-4">
-                        <label class="form-label">Number</label>
+                        <label class="form-label mt-2">
+                            Number <span style="color: red;">*</span>
+                        </label>
                         <input type="text" id="Number" class="form-control">
-
                         <div id="FullNameDiv">
-                            <label class="form-label mt-2">Full Name</label>
+                            <label class="form-label mt-2">
+                                Full Name <span style="color: red;">*</span>
+                            </label>
                             <input type="text" id="FullNameInput" class="form-control">
                         </div>
                     </div>
@@ -80,7 +89,9 @@
                 </div>
                 <div class="row" style="margin-top:20px;">
                     <div class="col-md-6" id="InquiryReasonDiv">
-                        <label class="form-label mt-2">Reason of Inquiry</label>
+                        <label class="form-label mt-2">
+                            Reason of Inquiry <span style="color: red;">*</span>
+                        </label>
                         <select id="InquiryReason" class="form-select">
                             <option></option>
                             <option value="1">EvaluatingOfABorrowerForANewCreditFacility</option>
@@ -115,7 +126,7 @@
                             </label>
                         </div>
                     </div>
-                </div
+                </div>
 
                 <!-- Search Button -->
                 <div class="row" style="margin-top:20px;">
@@ -250,29 +261,19 @@
         // changeNumberType();
         // toggleSearchMode();
 
-$("#SearchBtn").click(function () {
+    $("#SearchBtn").click(function () {
 
-    var numberType = $("#NumberType").val();
-    var number = $("#Number").val();
-    var isIndividual = $("#IndividualSearch").is(":checked");
-    var consentGiven = $("#ConsentSwitch").is(":checked");
-    var interactiveSearch = $("#InterActiveSearch").is(":checked");
+        var numberType = $("#NumberType").val();
+        var number = $("#Number").val();
+        var isIndividual = $("#IndividualSearch").is(":checked");
+        var consentGiven = $("#ConsentSwitch").is(":checked");
+        var interactiveSearch = $("#InterActiveSearch").is(":checked");
 
-    var fullName = isIndividual ? $("#FullNameInput").val() : "";
-    var gender = isIndividual ? $("#Gender").val() : "";
-    var companyName = !isIndividual ? $("#CompanyNameInput").val() : "";
+        var fullName = isIndividual ? $("#FullNameInput").val() : "";
+        var gender = isIndividual ? $("#Gender").val() : "";
+        var companyName = !isIndividual ? $("#CompanyNameInput").val() : "";
 
-    var inquiryReason = $("#InquiryReason").val();
-
-    // ✅ Validation
-    if (
-        !numberType ||
-        !number ||
-        !inquiryReason ||
-        (isIndividual && (!fullName || !gender)) ||
-        (!isIndividual && !companyName) ||
-        !consentGiven   // keep here so block executes
-    ) {
+        var inquiryReason = $("#InquiryReason").val();
 
         let title = "";
         let message = "";
@@ -301,55 +302,68 @@ $("#SearchBtn").click(function () {
             title = "Inquiry Reason Required";
             message = "Please enter Inquiry Reason";
         }
-        // ✅ LAST validation (your requirement)
-        else if (!consentGiven) {
-            title = "Interactive Search Required";
-            message = "Please enable Interactive Search (give consent) to proceed";
+
+        if (title) {
+            Swal.fire({
+                icon: 'warning',
+                title: title,
+                text: message,
+                confirmButtonColor: '#3085d6'
+            });
+            return;
         }
 
-        Swal.fire({
-            icon: 'warning',
-            title: title,
-            text: message,
-            confirmButtonColor: '#3085d6'
+        if (!consentGiven) {
+
+            if (!interactiveSearch) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: "Interactive Search Required",
+                    text: "Please enable Interactive Search to proceed",
+                    confirmButtonColor: '#3085d6'
+                });
+                return;
+            }
+        }
+
+        $.ajax({
+            url: '/SearchCRIB/SearchData',
+            type: 'POST',
+            data: {
+                numberType,
+                number,
+                fullName,
+                gender,
+                companyName,
+                consentGiven,
+                isIndividual,
+                inquiryReason,
+                interactiveSearch
+            },
+            success: function (res) {
+
+                $("#AppNo").text(res.applicationNumber);
+                $("#ResultFullName").text(res.fullName || res.companyName);
+                $("#FacilityType").text(res.creditFacilityType);
+
+                if (res.creditFacilityAmount) {
+                    $("#Amount").text(
+                        res.creditFacilityAmount.currency + " " +
+                        res.creditFacilityAmount.value
+                    );
+                }
+            },
+            error: function () {
+                Swal.fire({
+                    icon: 'error',
+                    title: "API Error",
+                    text: "Please contact system admin",
+                    confirmButtonColor: '#3085d6'
+                });
+            }
         });
 
-        return;
-    }
-
-    // ✅ AJAX Call
-    $.ajax({
-        url: '/SearchCRIB/SearchData',
-        type: 'POST',
-        data: {
-            numberType,
-            number,
-            fullName,
-            gender,
-            companyName,
-            consentGiven,
-            isIndividual,
-            inquiryReason
-        },
-        success: function (res) {
-
-            $("#AppNo").text(res.applicationNumber);
-            $("#ResultFullName").text(res.fullName || res.companyName);
-            $("#FacilityType").text(res.creditFacilityType);
-
-            if (res.creditFacilityAmount) {
-                $("#Amount").text(
-                    res.creditFacilityAmount.currency + " " +
-                    res.creditFacilityAmount.value
-                );
-            }
-        },
-        error: function () {
-            alert("Error calling API");
-        }
     });
 
 });
-
-    });
 </script>
