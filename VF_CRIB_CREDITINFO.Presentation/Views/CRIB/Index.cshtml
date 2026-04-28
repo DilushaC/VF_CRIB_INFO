@@ -225,8 +225,8 @@
             toggleSearchMode();
         });
 
-        changeNumberType();
-        toggleSearchMode();
+        // changeNumberType();
+        // toggleSearchMode();
 
         $("#SearchBtn").click(function () {
 
@@ -246,29 +246,29 @@
                 let message = "";
                 let title = "";
 
-                if (!consentGiven) {
-                    title = "Consent Required";
-                    message = "Please confirm the consent is given";
+                if (!numberType) {
+                    title = "Number Type Required";
+                    message = "Please enter Number Type";
                 }
                 else if (!number) {
                     title = "Number Required";
                     message = "Please enter the Number";
                 }
-                else if (!fullName) {
-                    title = "Full Name Required";
-                    message = "Please enter the Name";
-                }
                 else if (!gender) {
                     title = "Gender Required";
                     message = "Please enter the gender";
                 }
-                else if (!numberType) {
-                    title = "Number Type Required";
-                    message = "Please enter Number Type";
+                else if (!fullName) {
+                    title = "Full Name Required";
+                    message = "Please enter the Name";
                 }
                 else if (!inquiryReason) {
                     title = "Inquiry Reason Required";
                     message = "Please enter Inquiry Reason";
+                }
+                else if (!consentGiven) {
+                    title = "Consent Required";
+                    message = "Please confirm the consent is given";
                 }
 
                 Swal.fire({
