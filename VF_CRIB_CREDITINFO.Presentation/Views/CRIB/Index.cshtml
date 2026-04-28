@@ -44,6 +44,7 @@
                                 <option></option>
                                 <option value="NIC">NIC</option>
                                 <option value="Passport">Passport</option>
+                                <option value="NationalID">NationalID</option>
                             </select>
                         </div>
 
@@ -92,6 +93,18 @@
                     </div>
                 </div>
 
+                <!-- Interactive Search Switch -->
+                <div class="row" style="margin-top:20px;">
+                    <div class="col-md-4">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="InterActiveSearch">
+                            <label class="form-check-label" for="InterActiveSearch">
+                                Activate Interactive Search
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Consent Switch -->
                 <div class="row" style="margin-top:20px;">
                     <div class="col-md-4">
@@ -102,7 +115,7 @@
                             </label>
                         </div>
                     </div>
-                </div>
+                </div
 
                 <!-- Search Button -->
                 <div class="row" style="margin-top:20px;">
@@ -206,112 +219,137 @@
             });
         }
 
-        function toggleSearchMode() {
-            var isIndividual = $("#IndividualSearch").is(":checked");
+    function toggleSearchMode() {
+        var isIndividual = $("#IndividualSearch").is(":checked");
 
-            if (isIndividual) {
-                $("#GenderDiv").show();
-                $("#FullNameDiv").show();
-                $("#CompanyNameDiv").hide();
-            } else {
-                $("#GenderDiv").hide();
-                $("#FullNameDiv").hide();
-                $("#CompanyNameDiv").show();
-            }
+        if (isIndividual) {
+            $("#FullNameDiv").show();
+            $("#GenderDiv").show();
+            $("#CompanyNameDiv").hide();
+            $("#CompanyNameInput").val("");
+        } else {
+            $("#FullNameDiv").hide();
+            $("#GenderDiv").hide();
+            $("#CompanyNameDiv").show();
+            $("#FullNameInput").val("");
+            $("#Gender").val(null).trigger("change"); 
         }
 
-        $("input[name='tabs']").on("change", function () {
-            changeNumberType();
-            toggleSearchMode();
-        });
+        $("#Number").val("");
+        $("#NumberType").val(null).trigger("change"); 
+        $("#InquiryReason").val(null).trigger("change"); 
+        $("#ConsentSwitch").prop("checked", false);
+        $("#InterActiveSearch").prop("checked", false);
+    }
+
+    $("input[name='tabs']").on("change", function () {
+        changeNumberType();
+        toggleSearchMode();
+    });
 
         // changeNumberType();
         // toggleSearchMode();
 
-        $("#SearchBtn").click(function () {
+$("#SearchBtn").click(function () {
 
-            var numberType = $("#NumberType").val();
-            var number = $("#Number").val();
-            var isIndividual = $("#IndividualSearch").is(":checked");
-            var consentGiven = $("#ConsentSwitch").is(":checked");
+    var numberType = $("#NumberType").val();
+    var number = $("#Number").val();
+    var isIndividual = $("#IndividualSearch").is(":checked");
+    var consentGiven = $("#ConsentSwitch").is(":checked");
+    var interactiveSearch = $("#InterActiveSearch").is(":checked");
 
-            var fullName = isIndividual ? $("#FullNameInput").val() : "";
-            var gender = isIndividual ? $("#Gender").val() : "";
-            var companyName = !isIndividual ? $("#CompanyNameInput").val() : "";
+    var fullName = isIndividual ? $("#FullNameInput").val() : "";
+    var gender = isIndividual ? $("#Gender").val() : "";
+    var companyName = !isIndividual ? $("#CompanyNameInput").val() : "";
 
-            var inquiryReason = $("#InquiryReason").val();
+    var inquiryReason = $("#InquiryReason").val();
 
-            if (!consentGiven || !number || !fullName || !gender || !numberType || !inquiryReason ){
+    // ✅ Validation
+    if (
+        !numberType ||
+        !number ||
+        !inquiryReason ||
+        (isIndividual && (!fullName || !gender)) ||
+        (!isIndividual && !companyName) ||
+        !consentGiven   // keep here so block executes
+    ) {
 
-                let message = "";
-                let title = "";
+        let title = "";
+        let message = "";
 
-                if (!numberType) {
-                    title = "Number Type Required";
-                    message = "Please enter Number Type";
-                }
-                else if (!number) {
-                    title = "Number Required";
-                    message = "Please enter the Number";
-                }
-                else if (!gender) {
-                    title = "Gender Required";
-                    message = "Please enter the gender";
-                }
-                else if (!fullName) {
-                    title = "Full Name Required";
-                    message = "Please enter the Name";
-                }
-                else if (!inquiryReason) {
-                    title = "Inquiry Reason Required";
-                    message = "Please enter Inquiry Reason";
-                }
-                else if (!consentGiven) {
-                    title = "Consent Required";
-                    message = "Please confirm the consent is given";
-                }
+        if (!numberType) {
+            title = "Number Type Required";
+            message = "Please enter Number Type";
+        }
+        else if (!number) {
+            title = "Number Required";
+            message = "Please enter the Number";
+        }
+        else if (isIndividual && !fullName) {
+            title = "Full Name Required";
+            message = "Please enter the Name";
+        }
+        else if (isIndividual && !gender) {
+            title = "Gender Required";
+            message = "Please enter the gender";
+        }
+        else if (!isIndividual && !companyName) {
+            title = "Company Name Required";
+            message = "Please enter Company Name";
+        }
+        else if (!inquiryReason) {
+            title = "Inquiry Reason Required";
+            message = "Please enter Inquiry Reason";
+        }
+        // ✅ LAST validation (your requirement)
+        else if (!consentGiven) {
+            title = "Interactive Search Required";
+            message = "Please enable Interactive Search (give consent) to proceed";
+        }
 
-                Swal.fire({
-                    icon: 'warning',
-                    title: title,
-                    text: message,
-                    confirmButtonColor: '#3085d6'
-                });
-
-                return;
-            }
-
-            $.ajax({
-                url: '/SearchCRIB/SearchData',
-                type: 'POST',
-                data: {
-                    numberType,
-                    number,
-                    fullName,
-                    gender,
-                    companyName,
-                    consentGiven,
-                    isIndividual
-                },
-                success: function (res) {
-
-                    $("#AppNo").text(res.applicationNumber);
-                    $("#ResultFullName").text(res.fullName || res.companyName);
-                    $("#FacilityType").text(res.creditFacilityType);
-
-                    if (res.creditFacilityAmount) {
-                        $("#Amount").text(
-                            res.creditFacilityAmount.currency + " " +
-                            res.creditFacilityAmount.value
-                        );
-                    }
-                },
-                error: function () {
-                    alert("Error calling API");
-                }
-            });
-
+        Swal.fire({
+            icon: 'warning',
+            title: title,
+            text: message,
+            confirmButtonColor: '#3085d6'
         });
+
+        return;
+    }
+
+    // ✅ AJAX Call
+    $.ajax({
+        url: '/SearchCRIB/SearchData',
+        type: 'POST',
+        data: {
+            numberType,
+            number,
+            fullName,
+            gender,
+            companyName,
+            consentGiven,
+            isIndividual,
+            inquiryReason
+        },
+        success: function (res) {
+
+            $("#AppNo").text(res.applicationNumber);
+            $("#ResultFullName").text(res.fullName || res.companyName);
+            $("#FacilityType").text(res.creditFacilityType);
+
+            if (res.creditFacilityAmount) {
+                $("#Amount").text(
+                    res.creditFacilityAmount.currency + " " +
+                    res.creditFacilityAmount.value
+                );
+            }
+        },
+        error: function () {
+            alert("Error calling API");
+        }
+    });
+
+});
 
     });
 </script>
