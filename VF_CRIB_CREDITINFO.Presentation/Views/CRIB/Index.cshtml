@@ -103,6 +103,14 @@
                         </select>
                     </div>
                 </div>
+                <div class="row" style="margin-top:20px; display:none;" id="ApplicationNumberDiv">
+                    <div class="col-md-6">
+                        <label class="form-label mt-2">
+                            Application Number <span style="color: red;">*</span>
+                        </label>
+                        <input type="text" id="ApplicationNumberInput" class="form-control">
+                    </div>
+                </div>
 
                 <!-- Interactive Search Switch -->
                 <div class="row" style="margin-top:20px;">
@@ -162,6 +170,20 @@
                         <p class="text-muted font-14" id="Amount"></p>
                     </div>
 
+                    <div class="col-lg-6">
+                        <p class="mb-1 fw-bold text-muted">Currency :</p>
+                        <p class="text-muted font-14" id="Currency"></p>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <p class="mb-1 fw-bold text-muted">Currency :</p>
+                        <p class="text-muted font-14" id="Currency"></p>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <p class="mb-1 fw-bold text-muted">Report Date :</p>
+                        <p class="text-muted font-14" id="ReportDate"></p>
+                    </div>
                 </div>
 
                 <!-- Download -->
@@ -185,6 +207,7 @@
 <script>
     $(document).ready(function () {
 
+        // Init Select2
         $("#Gender").select2({
             placeholder: "Select Gender",
             allowClear: true,
@@ -203,6 +226,7 @@
             width: '100%'
         });
 
+        // 🔹 Change Number Type
         function changeNumberType() {
             var select = $("#NumberType");
 
@@ -230,92 +254,115 @@
             });
         }
 
-    function toggleSearchMode() {
-        var isIndividual = $("#IndividualSearch").is(":checked");
+        // 🔹 Toggle Search Mode
+        function toggleSearchMode() {
+            var isIndividual = $("#IndividualSearch").is(":checked");
 
-        if (isIndividual) {
-            $("#FullNameDiv").show();
-            $("#GenderDiv").show();
-            $("#CompanyNameDiv").hide();
-            $("#CompanyNameInput").val("");
-        } else {
-            $("#FullNameDiv").hide();
-            $("#GenderDiv").hide();
-            $("#CompanyNameDiv").show();
-            $("#FullNameInput").val("");
-            $("#Gender").val(null).trigger("change"); 
+            if (isIndividual) {
+                $("#FullNameDiv").show();
+                $("#GenderDiv").show();
+                $("#CompanyNameDiv").hide();
+                $("#CompanyNameInput").val("");
+            } else {
+                $("#FullNameDiv").hide();
+                $("#GenderDiv").hide();
+                $("#CompanyNameDiv").show();
+                $("#FullNameInput").val("");
+                $("#Gender").val(null).trigger("change");
+            }
+
+            $("#Number").val("");
+            $("#NumberType").val(null).trigger("change");
+            $("#InquiryReason").val(null).trigger("change");
+            $("#ConsentSwitch").prop("checked", false);
+            $("#InterActiveSearch").prop("checked", false);
+
+            // 🔹 Reset Application Number
+            $("#ApplicationNumberDiv").hide();
+            $("#ApplicationNumberInput").val("");
         }
 
-        $("#Number").val("");
-        $("#NumberType").val(null).trigger("change"); 
-        $("#InquiryReason").val(null).trigger("change"); 
-        $("#ConsentSwitch").prop("checked", false);
-        $("#InterActiveSearch").prop("checked", false);
-    }
+        $("input[name='tabs']").on("change", function () {
+            changeNumberType();
+            toggleSearchMode();
+        });
 
-    $("input[name='tabs']").on("change", function () {
-        changeNumberType();
-        toggleSearchMode();
-    });
+        // 🔹 Show/Hide Application Number based on Inquiry Reason
+        $("#InquiryReason").on("change", function () {
+            var value = $(this).val();
 
-        // changeNumberType();
-        // toggleSearchMode();
+            if (value === "1" || value === "2" || value === "5" || value === "6") {
+                $("#ApplicationNumberDiv").show();
+            } else {
+                $("#ApplicationNumberDiv").hide();
+                $("#ApplicationNumberInput").val("");
+            }
+        });
 
-    $("#SearchBtn").click(function () {
+        // 🔹 Search Button Click
+        $("#SearchBtn").click(function () {
 
-        var numberType = $("#NumberType").val();
-        var number = $("#Number").val();
-        var isIndividual = $("#IndividualSearch").is(":checked");
-        var consentGiven = $("#ConsentSwitch").is(":checked");
-        var interactiveSearch = $("#InterActiveSearch").is(":checked");
+            var numberType = $("#NumberType").val();
+            var number = $("#Number").val();
+            var isIndividual = $("#IndividualSearch").is(":checked");
+            var consentGiven = $("#ConsentSwitch").is(":checked");
+            var interactiveSearch = $("#InterActiveSearch").is(":checked");
 
-        var fullName = isIndividual ? $("#FullNameInput").val() : "";
-        var gender = isIndividual ? $("#Gender").val() : "";
-        var companyName = !isIndividual ? $("#CompanyNameInput").val() : "";
+            var fullName = isIndividual ? $("#FullNameInput").val() : "";
+            var gender = isIndividual ? $("#Gender").val() : "";
+            var companyName = !isIndividual ? $("#CompanyNameInput").val() : "";
 
-        var inquiryReason = $("#InquiryReason").val();
+            var inquiryReason = $("#InquiryReason").val();
+            var applicationNumber = $("#ApplicationNumberInput").val();
 
-        let title = "";
-        let message = "";
+            let title = "";
+            let message = "";
 
-        if (!numberType) {
-            title = "Number Type Required";
-            message = "Please enter Number Type";
-        }
-        else if (!number) {
-            title = "Number Required";
-            message = "Please enter the Number";
-        }
-        else if (isIndividual && !fullName) {
-            title = "Full Name Required";
-            message = "Please enter the Name";
-        }
-        else if (isIndividual && !gender) {
-            title = "Gender Required";
-            message = "Please enter the gender";
-        }
-        else if (!isIndividual && !companyName) {
-            title = "Company Name Required";
-            message = "Please enter Company Name";
-        }
-        else if (!inquiryReason) {
-            title = "Inquiry Reason Required";
-            message = "Please enter Inquiry Reason";
-        }
+            if (!numberType) {
+                title = "Number Type Required";
+                message = "Please enter Number Type";
+            }
+            else if (!number) {
+                title = "Number Required";
+                message = "Please enter the Number";
+            }
+            else if (isIndividual && !fullName) {
+                title = "Full Name Required";
+                message = "Please enter the Name";
+            }
+            else if (isIndividual && !gender) {
+                title = "Gender Required";
+                message = "Please enter the gender";
+            }
+            else if (!isIndividual && !companyName) {
+                title = "Company Name Required";
+                message = "Please enter Company Name";
+            }
+            else if (!inquiryReason) {
+                title = "Inquiry Reason Required";
+                message = "Please enter Inquiry Reason";
+            }
+            // 🔴 Application Number Validation
+            else if (
+                (inquiryReason === "1" || inquiryReason === "2" || inquiryReason === "5" || inquiryReason === "6")
+                && !applicationNumber
+            ) {
+                title = "Application Number Required";
+                message = "Please enter Application Number";
+            }
 
-        if (title) {
-            Swal.fire({
-                icon: 'warning',
-                title: title,
-                text: message,
-                confirmButtonColor: '#3085d6'
-            });
-            return;
-        }
+            if (title) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: title,
+                    text: message,
+                    confirmButtonColor: '#3085d6'
+                });
+                return;
+            }
 
-        if (!consentGiven) {
-
-            if (!interactiveSearch) {
+            // 🔹 Consent Logic
+            if (!consentGiven && !interactiveSearch) {
                 Swal.fire({
                     icon: 'warning',
                     title: "Interactive Search Required",
@@ -324,46 +371,47 @@
                 });
                 return;
             }
-        }
 
-        $.ajax({
-            url: '/SearchCRIB/SearchData',
-            type: 'POST',
-            data: {
-                numberType,
-                number,
-                fullName,
-                gender,
-                companyName,
-                consentGiven,
-                isIndividual,
-                inquiryReason,
-                interactiveSearch
-            },
-            success: function (res) {
+            // 🔹 AJAX Call
+            $.ajax({
+                url: '/SearchCRIB/SearchData',
+                type: 'POST',
+                data: {
+                    numberType,
+                    number,
+                    fullName,
+                    gender,
+                    companyName,
+                    consentGiven,
+                    isIndividual,
+                    inquiryReason,
+                    interactiveSearch,
+                    applicationNumber
+                },
+                success: function (res) {
 
-                $("#AppNo").text(res.applicationNumber);
-                $("#ResultFullName").text(res.fullName || res.companyName);
-                $("#FacilityType").text(res.creditFacilityType);
+                    $("#AppNo").text(res.applicationNumber);
+                    $("#ResultFullName").text(res.fullName || res.companyName);
+                    $("#FacilityType").text(res.creditFacilityType);
 
-                if (res.creditFacilityAmount) {
-                    $("#Amount").text(
-                        res.creditFacilityAmount.currency + " " +
-                        res.creditFacilityAmount.value
-                    );
+                    if (res.creditFacilityAmount) {
+                        $("#Amount").text(
+                            res.creditFacilityAmount.currency + " " +
+                            res.creditFacilityAmount.value
+                        );
+                    }
+                },
+                error: function () {
+                    Swal.fire({
+                        icon: 'error',
+                        title: "API Error",
+                        text: "Please contact system admin",
+                        confirmButtonColor: '#3085d6'
+                    });
                 }
-            },
-            error: function () {
-                Swal.fire({
-                    icon: 'error',
-                    title: "API Error",
-                    text: "Please contact system admin",
-                    confirmButtonColor: '#3085d6'
-                });
-            }
+            });
+
         });
 
     });
-
-});
 </script>
