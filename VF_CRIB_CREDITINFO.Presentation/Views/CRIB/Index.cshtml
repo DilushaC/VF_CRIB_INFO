@@ -94,24 +94,92 @@
                         </label>
                         <select id="InquiryReason" class="form-select">
                             <option></option>
-                            <option value="1">EvaluatingOfABorrowerForANewCreditFacility</option>
-                            <option value="2">ReviewAsAGuarantorForANewCreditFacility</option>
-                            <option value="3">MonitoringAndReviewingOfAnExistingBorrower</option>
-                            <option value="4">OpeningOfACurrentAccount</option>
-                            <option value="5">ReviewAsAPartnerOrProprietorForANewCreditFacility</option>
-                            <option value="6">ReviewAsADirectorForANewCreditFacility</option>
+                            <option value="1">Evaluating Of A Borrower For A New Credit Facility</option>
+                            <option value="2">Review As A Guarantor For A New Credit Facility</option>
+                            <option value="3">Monitoring And Reviewing Of An Existing Borrower</option>
+                            <option value="4">Opening Of A Current Account</option>
+                            <option value="5">Review As A Partner Or Proprietor For A New Credit Facility</option>
+                            <option value="6">Review As A Director For A New Credit Facility</option>
+                            <option value="7">Obtaining Of Own Credit Report </option>
+                            <option value="8">Bureau Internal Investigation </option>
+                            <option value="9">CBS Information Request </option>
+                            <option value="10">Issuing Of Information By Order Of Court  </option>
                         </select>
                     </div>
                 </div>
                 <div class="row" style="margin-top:20px; display:none;" id="ApplicationNumberDiv">
-                    <div class="col-md-6">
+                    <div class="col-sm-3">
                         <label class="form-label mt-2">
                             Application Number <span style="color: red;">*</span>
                         </label>
                         <input type="text" id="ApplicationNumberInput" class="form-control">
                     </div>
                 </div>
+                <div class="row" style="margin-top:20px; display:none;" id="CreditFacilityRegion">
 
+                    <div class="col-sm-3" id="CreditFacilityTypeDiv">
+                        <label class="form-label mt-2">
+                            Credit Facility Type <span style="color: red;">*</span>
+                        </label>
+                        <input type="text" id="CreditFacilityTypeInput" class="form-control">
+                    </div>
+
+                    <div class="col-sm-3" id="CreditFacilityCurrencyDiv">
+                        <label class="form-label mt-2">
+                            Credit Facility Currency <span style="color: red;">*</span>
+                        </label>
+                        <input type="number" id="CreditFacilityCurrencyInput" class="form-control">
+                    </div>
+
+                    <div class="col-sm-3" id="CreditFacilityAmountDiv">
+                        <label class="form-label mt-2">
+                            Credit Facility Amount <span style="color: red;">*</span>
+                        </label>
+                        <input type="number" id="CreditFacilityAmountInput" class="form-control">
+                    </div>
+
+                </div>
+                <div class="row" style="margin-top:20px; display:none;" id="MailAddressDiv">
+                    <div class="col-sm-3">
+                        <label class="form-label mt-2">
+                            Mail Address <span style="color: red;">*</span>
+                        </label>
+                        <input type="email" id="MailAddressInput" class="form-control">
+                    </div>
+                </div>
+                <div class="row" style="margin-top:20px; display:none;" id="CourtRegion">
+
+                    <div class="col-sm-3" id="CourtNameDiv">
+                        <label class="form-label mt-2">
+                            Name of Court <span style="color: red;">*</span>
+                        </label>
+                        <input type="text" id="CourtNameInput" class="form-control">
+                    </div>
+
+                    <div class="col-sm-3" id="OrderNumberDiv">
+                        <label class="form-label mt-2">
+                            Order Number <span style="color: red;">*</span>
+                        </label>
+                        <input type="number" id="OrderNumberInput" class="form-control">
+                    </div>
+
+                </div>
+                <div class="row" style="margin-top:20px; display:none;" id="RemarksDiv">
+                    <div class="col-sm-3">
+                        <label class="form-label mt-2">
+                            Remarks <span style="color: red;">*</span>
+                        </label>
+                        <textarea id="RemarksInput" class="form-control" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:20px; display:none;" id="ApplicationDateDiv">
+                    <div class="col-sm-3">
+                        <label class="form-label mt-2">
+                            Application Date <span style="color: red;">*</span>
+                        </label>
+                        <input type="date" id="ApplicationDateInput" class="form-control">
+                    </div>
+                </div>
                 <!-- Interactive Search Switch -->
                 <div class="row" style="margin-top:20px;">
                     <div class="col-md-4">
@@ -291,11 +359,67 @@
         $("#InquiryReason").on("change", function () {
             var value = $(this).val();
 
+            // First hide everything by default
+            $("#ApplicationNumberDiv").hide();
+            $("#ApplicationDateDiv").hide();
+
+            $("#CreditFacilityRegion").hide();
+            $("#CourtRegion").hide();
+            $("#CreditFacilityTypeDiv").hide();
+            $("#CreditFacilityCurrencyDiv").hide();
+            $("#CreditFacilityAmountDiv").hide();
+            $("#MailAddressDiv").hide();
+            $("#RemarksDiv").hide();
+
+
+            // Clear values
+            $("#ApplicationNumberInput").val("");
+            $("#ApplicationDateInput").val("");
+            $("#CreditFacilityTypeInput").val("");
+            $("#CreditFacilityCurrencyInput").val("");
+            $("#CreditFacilityAmountInput").val("");
+            $("#MailAddressInput").val("");
+            $("#RemarksInput").val("");
+            $("#CourtNameInput").val("");
+            $("#OrderNumberInput").val("");
+
+            // Apply logic
             if (value === "1" || value === "2" || value === "5" || value === "6") {
+
                 $("#ApplicationNumberDiv").show();
-            } else {
-                $("#ApplicationNumberDiv").hide();
-                $("#ApplicationNumberInput").val("");
+                $("#ApplicationDateDiv").show();
+
+                // Show ALL credit facility fields
+                $("#CreditFacilityRegion").show();
+                $("#CreditFacilityTypeDiv").show();
+                $("#CreditFacilityCurrencyDiv").show();
+                $("#CreditFacilityAmountDiv").show();
+
+            }
+            else if (value === "4") {
+
+                $("#ApplicationNumberDiv").show();
+                $("#ApplicationDateDiv").show();
+
+                // Show ONLY Credit Facility Type
+                $("#CreditFacilityRegion").show();
+                $("#CreditFacilityTypeDiv").show();
+
+                // Keep others hidden
+                $("#CreditFacilityCurrencyDiv").hide();
+                $("#CreditFacilityAmountDiv").hide();
+            }
+            else if (value === "7") {
+                $("#MailAddressDiv").show(); // ✅ show the DIV, not the input
+            }
+            else if (value === "8" || value === "9"){
+                $("#RemarksDiv").show(); // ✅ show the DIV, not the input
+            }
+            else if (value === "10"){
+                $("#CourtRegion").show();
+                $("#CourtNameDiv").show();
+                $("#OrderNumberDiv").show();
+                $("#RemarksDiv").show();
             }
         });
 
@@ -305,8 +429,6 @@
             var numberType = $("#NumberType").val();
             var number = $("#Number").val();
             var isIndividual = $("#IndividualSearch").is(":checked");
-            var consentGiven = $("#ConsentSwitch").is(":checked");
-            var interactiveSearch = $("#InterActiveSearch").is(":checked");
 
             var fullName = isIndividual ? $("#FullNameInput").val() : "";
             var gender = isIndividual ? $("#Gender").val() : "";
@@ -314,13 +436,27 @@
 
             var inquiryReason = $("#InquiryReason").val();
             var applicationNumber = $("#ApplicationNumberInput").val();
+            var creditFacilityType = $("#CreditFacilityTypeInput").val();
+            var creditFacilityCurrency = $("#CreditFacilityCurrencyInput").val();
+            var creditFacilityAmount = $("#CreditFacilityAmountInput").val();
+            var applicationDate = $("#ApplicationDateInput").val();
+
+            var mailAddress = $("#MailAddressInput").val();
+            var remarks = $("#RemarksInput").val();
+            var courtName = $("#CourtNameInput").val();
+            var orderNumber = $("#OrderNumberInput").val();
+
+
+
+            var consentGiven = $("#ConsentSwitch").is(":checked");
+            var interactiveSearch = $("#InterActiveSearch").is(":checked");
 
             let title = "";
             let message = "";
 
             if (!numberType) {
                 title = "Number Type Required";
-                message = "Please enter Number Type";
+                message = "Please select Number Type";
             }
             else if (!number) {
                 title = "Number Required";
@@ -328,11 +464,11 @@
             }
             else if (isIndividual && !fullName) {
                 title = "Full Name Required";
-                message = "Please enter the Name";
+                message = "Please enter Full Name";
             }
             else if (isIndividual && !gender) {
                 title = "Gender Required";
-                message = "Please enter the gender";
+                message = "Please select Gender";
             }
             else if (!isIndividual && !companyName) {
                 title = "Company Name Required";
@@ -340,15 +476,75 @@
             }
             else if (!inquiryReason) {
                 title = "Inquiry Reason Required";
-                message = "Please enter Inquiry Reason";
+                message = "Please select Inquiry Reason";
             }
-            // 🔴 Application Number Validation
-            else if (
-                (inquiryReason === "1" || inquiryReason === "2" || inquiryReason === "5" || inquiryReason === "6")
-                && !applicationNumber
-            ) {
-                title = "Application Number Required";
-                message = "Please enter Application Number";
+
+            // ✅ For Inquiry 1,2,5,6 → ALL fields required
+            else if (["1", "2", "5", "6"].includes(inquiryReason)) {
+
+                if (!applicationNumber) {
+                    title = "Application Number Required";
+                    message = "Please enter Application Number";
+                }
+                else if (!creditFacilityType) {
+                    title = "Credit Facility Type Required";
+                    message = "Please enter Credit Facility Type";
+                }
+                else if (!creditFacilityCurrency) {
+                    title = "Currency Required";
+                    message = "Please enter Credit Facility Currency";
+                }
+                else if (!creditFacilityAmount) {
+                    title = "Amount Required";
+                    message = "Please enter Credit Facility Amount";
+                }
+                else if (!applicationDate) {
+                    title = "Application Date Required";
+                    message = "Please select Application Date";
+                }
+            }
+
+            // ✅ For Inquiry 4 → ONLY type required
+            else if (inquiryReason === "4") {
+
+                if (!applicationNumber) {
+                    title = "Application Number Required";
+                    message = "Please enter Application Number";
+                }
+                else if (!creditFacilityType) {
+                    title = "Credit Facility Type Required";
+                    message = "Please enter Credit Facility Type";
+                }
+                else if (!applicationDate) {
+                    title = "Application Date Required";
+                    message = "Please select Application Date";
+                }
+            }
+            else if (inquiryReason === "7") {
+
+                if (!mailAddress) {
+                    title = "Mail Address Required";
+                    message = "Please enter Mail Address";
+                }
+            }
+
+            else if (inquiryReason === "8" || inquiryReason === "9") {
+
+                if (!remarks) {
+                    title = "Remarks Required";
+                    message = "Please enter Remarks";
+                }
+            }
+            else if (inquiryReason === "10") {
+
+                if (!courtName) {
+                    title = "Court Name Required";
+                    message = "Please enter Court Name";
+                }
+                else if(!orderNumber){
+                    title = "Order Number is Required";
+                    message = "Please enter Order Number";
+                }
             }
 
             if (title) {
@@ -361,12 +557,11 @@
                 return;
             }
 
-            // 🔹 Consent Logic
-            if (!consentGiven && !interactiveSearch) {
+            if (!interactiveSearch && !consentGiven) {
                 Swal.fire({
                     icon: 'warning',
-                    title: "Interactive Search Required",
-                    text: "Please enable Interactive Search to proceed",
+                    title: "Consent Required",
+                    text: "Please confirm customer consent or enable Interactive Search",
                     confirmButtonColor: '#3085d6'
                 });
                 return;
