@@ -35,8 +35,7 @@
 
                 <!-- Inputs -->
                 <div class="row" style="margin-top:3%;">
-
-                    <!-- Number Type + Gender / Company -->
+                    <!-- Row 1: Number Type + Number -->
                     <div class="col-sm-3">
                         <div id="NumberTypeDiv">
                             <label class="form-label mt-2">
@@ -49,8 +48,21 @@
                                 <option value="NationalID">NationalID</option>
                             </select>
                         </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="form-label mt-2">
+                            Number <span style="color: red;">*</span>
+                        </label>
+                        <div style="position:relative;">
+                            <input type="text" id="Number" class="form-control">
+                            <span id="NumberValidationMsg" style="font-size:12px; position:absolute; left:0; top:calc(100% + 2px); white-space:nowrap;"></span>
+                        </div>
+                    </div>
+                </div>
 
-                        <!-- Gender -->
+                <div class="row" style="margin-top:20px;">
+                    <!-- Row 2: Gender + Full Name -->
+                    <div class="col-sm-3">
                         <div id="GenderDiv">
                             <label class="form-label mt-2">
                                 Gender <span style="color: red;">*</span>
@@ -61,8 +73,6 @@
                                 <option value="female">Female</option>
                             </select>
                         </div>
-
-
                         <!-- Company Name -->
                         <div id="CompanyNameDiv" style="display:none;">
                             <label class="form-label mt-2">
@@ -71,13 +81,7 @@
                             <input type="text" id="CompanyNameInput" class="form-control">
                         </div>
                     </div>
-
-                    <!-- Number + Full Name -->
                     <div class="col-sm-4">
-                        <label class="form-label mt-2">
-                            Number <span style="color: red;">*</span>
-                        </label>
-                        <input type="text" id="Number" class="form-control">
                         <div id="FullNameDiv">
                             <label class="form-label mt-2">
                                 Full Name <span style="color: red;">*</span>
@@ -85,7 +89,6 @@
                             <input type="text" id="FullNameInput" class="form-control">
                         </div>
                     </div>
-
                 </div>
                 <div class="row" style="margin-top:20px;">
                     <div class="col-md-6" id="InquiryReasonDiv">
@@ -423,6 +426,55 @@
             }
         });
 
+
+        //NIC passport validation
+            // 🔹 Real-time NIC / Passport format validation
+        function validateNumberField() {
+            var numberType = $("#NumberType").val();
+            var value = $("#Number").val().trim();
+            var msg = $("#NumberValidationMsg");
+
+            if (!numberType || value === "") {
+                msg.hide();
+                return;
+            }
+
+            var oldNIC     = /^\d{9}[VvXx]$/;          // 9 digits + V or X
+            var newNIC     = /^\d{12}$/;                // exactly 12 digits
+            var passport   = /^[A-Z]{1,2}\d{7}$/;      // 1-2 letters + 7 digits (Sri Lankan passport)
+
+            var isValid = false;
+
+            if (numberType === "NIC") {
+                isValid = oldNIC.test(value) || newNIC.test(value);
+                if (isValid) {
+                    msg.text("✔ Valid NIC format").css("color", "green").show();
+                } else {
+                    msg.text("✘ Invalid NIC — old format: 9 digits + V/X (e.g. 123456789V) | new format: 12 digits (e.g. 200012345678)").css("color", "red").show();
+                }
+            }
+            else if (numberType === "Passport") {
+                isValid = passport.test(value);
+                if (isValid) {
+                    msg.text("✔ Valid Passport number format").css("color", "green").show();
+                } else {
+                    msg.text("✘ Invalid Passport — expected 1-2 uppercase letters followed by 7 digits (e.g. N1234567 or AB1234567)").css("color", "red").show();
+                }
+            }
+            else {
+                msg.hide(); // BRN or others — no format check
+            }
+        }
+
+        $("#Number").on("input", function () {
+            validateNumberField();
+        });
+
+        // Re-validate when number type changes (in case number is already typed)
+        $("#NumberType").on("change", function () {
+            $("#Number").val("");
+            $("#NumberValidationMsg").hide();
+        });
         // 🔹 Search Button Click
         $("#SearchBtn").click(function () {
 
@@ -458,10 +510,22 @@
                 title = "Number Type Required";
                 message = "Please select Number Type";
             }
+
             else if (!number) {
                 title = "Number Required";
                 message = "Please enter the Number";
             }
+            // NIC passport validation
+            else if (numberType === "NIC" && !/^\d{9}[VvXx]$|^\d{12}$/.test(number.trim())) {
+                title = "Invalid NIC Format";
+                message = "Please enter a valid NIC number";
+            }
+            else if (numberType === "Passport" && !/^[A-Z]{1,2}\d{7}$/.test(number.trim())) {
+                title = "Invalid Passport Format";
+                message = "Please enter a valid Passport number";
+            }
+
+
             else if (isIndividual && !fullName) {
                 title = "Full Name Required";
                 message = "Please enter Full Name";
