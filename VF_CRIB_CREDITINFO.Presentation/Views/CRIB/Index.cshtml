@@ -95,18 +95,15 @@
                         <label class="form-label mt-2">
                             Reason of Inquiry <span style="color: red;">*</span>
                         </label>
-                        <select id="InquiryReason" class="form-select">
-                            <option></option>
-                            <option value="1">Evaluating Of A Borrower For A New Credit Facility</option>
-                            <option value="2">Review As A Guarantor For A New Credit Facility</option>
-                            <option value="3">Monitoring And Reviewing Of An Existing Borrower</option>
-                            <option value="4">Opening Of A Current Account</option>
-                            <option value="5">Review As A Partner Or Proprietor For A New Credit Facility</option>
-                            <option value="6">Review As A Director For A New Credit Facility</option>
-                            <option value="7">Obtaining Of Own Credit Report </option>
-                            <option value="8">Bureau Internal Investigation </option>
-                            <option value="9">CBS Information Request </option>
-                            <option value="10">Issuing Of Information By Order Of Court  </option>
+                        <select id="InquiryReasonInput" class="form-select">
+                            <option value=""></option>
+                            @if (ViewBag.InquiryReasons != null)
+                            {
+                                foreach (var inquiry in ViewBag.InquiryReasons)
+                                {
+                                    <option value="@inquiry.Id">@inquiry.InquiryReason</option>
+                                }
+                            }
                         </select>
                     </div>
                 </div>
@@ -322,6 +319,12 @@
 
         $("#CreditFacilityTypeInput").select2({
             placeholder: "Select Credit Facility Type",
+            allowClear: true,
+            width: '100%'
+        });
+
+        $("#InquiryReasonInput").select2({
+            placeholder: "Select Inquiry Reason",
             allowClear: true,
             width: '100%'
         });

@@ -19,6 +19,7 @@ namespace VF_CRIB_CREDITINFO.Presentation.Controllers
         {
             ViewBag.Currencies = _CRIBService.GetActiveCurrencies();
             ViewBag.CreditFacilityTypes = _CRIBService.GetCreditFacilityTypes();
+            ViewBag.InquiryReasons = _CRIBService.GetInquiryReasons();
             return View();
         }
 

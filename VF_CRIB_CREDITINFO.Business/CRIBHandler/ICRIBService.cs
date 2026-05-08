@@ -13,5 +13,6 @@ namespace VF_CRIB_CREDITINFO.Business.SearchCRIBHandler
 
         IEnumerable<CurrencyModel> GetActiveCurrencies();
         IEnumerable<CreditFacilityTypeModel> GetCreditFacilityTypes();
+        IEnumerable<InquiryReasonModel> GetInquiryReasons();
     }
 }

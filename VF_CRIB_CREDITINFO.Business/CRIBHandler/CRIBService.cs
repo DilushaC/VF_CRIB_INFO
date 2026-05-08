@@ -68,5 +68,11 @@ namespace VF_CRIB_CREDITINFO.Business.SearchCRIBHandler
             var query = "SELECT Id, FacilityType, IsActive FROM CreditFacilityType WHERE IsActive = 1";
             return _connectionService.Query<CreditFacilityTypeModel>(query);
         }
+
+        public IEnumerable<InquiryReasonModel> GetInquiryReasons()
+        {
+            var query = "SELECT Id, InquiryReason, IsActive FROM InquiryReason WHERE IsActive = 1";
+            return _connectionService.Query<InquiryReasonModel>(query);
+        }
     }
 }
