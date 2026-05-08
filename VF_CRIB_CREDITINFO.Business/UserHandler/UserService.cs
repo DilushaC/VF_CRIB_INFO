@@ -32,7 +32,7 @@ namespace VF_CRIB_CREDITINFO.Business.UserHandler
             // 2. Get User
             const string userQuery = @"
                 SELECT *
-                FROM [dbo].[CribSystemUser]
+                FROM SystemUser
                 WHERE EmployeeId = @EmployeeId AND IsActive = 1";
 
             var userParams = new DynamicParameters();

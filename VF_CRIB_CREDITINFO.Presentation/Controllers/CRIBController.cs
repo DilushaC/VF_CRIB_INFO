@@ -17,6 +17,8 @@ namespace VF_CRIB_CREDITINFO.Presentation.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Currencies = _CRIBService.GetActiveCurrencies();
+            ViewBag.CreditFacilityTypes = _CRIBService.GetCreditFacilityTypes();
             return View();
         }
 

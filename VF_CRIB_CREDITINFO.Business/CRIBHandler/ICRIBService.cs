@@ -10,5 +10,8 @@ namespace VF_CRIB_CREDITINFO.Business.SearchCRIBHandler
     public interface ICRIBService
     {
         Task<string> SearchCRIBData(string numberType, string number, bool isIndividual, string token);
+
+        IEnumerable<CurrencyModel> GetActiveCurrencies();
+        IEnumerable<CreditFacilityTypeModel> GetCreditFacilityTypes();
     }
 }

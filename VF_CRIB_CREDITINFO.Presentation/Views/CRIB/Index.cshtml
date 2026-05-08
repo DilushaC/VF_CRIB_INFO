@@ -69,8 +69,8 @@
                             </label>
                             <select id="Gender" class="form-select">
                                 <option></option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
                             </select>
                         </div>
                         <!-- Company Name -->
@@ -124,14 +124,31 @@
                         <label class="form-label mt-2">
                             Credit Facility Type <span style="color: red;">*</span>
                         </label>
-                        <input type="text" id="CreditFacilityTypeInput" class="form-control">
+                        <select id="CreditFacilityTypeInput" class="form-select">
+                            <option value=""></option>
+                            @if (ViewBag.CreditFacilityTypes != null)
+                            {
+                                foreach (var type in ViewBag.CreditFacilityTypes)
+                                {
+                                    <option value="@type.Id">@type.FacilityType</option>
+                                }
+                            }
+                        </select>
                     </div>
-
                     <div class="col-sm-3" id="CreditFacilityCurrencyDiv">
                         <label class="form-label mt-2">
                             Credit Facility Currency <span style="color: red;">*</span>
                         </label>
-                        <input type="number" id="CreditFacilityCurrencyInput" class="form-control">
+                        <select id="CreditFacilityCurrencyInput" class="form-select">
+                            <option value=""></option>
+                            @if (ViewBag.Currencies != null)
+                            {
+                                foreach (var currency in ViewBag.Currencies)
+                                {
+                                    <option value="@currency.Id">@currency.Currency</option>
+                                }
+                            }
+                        </select>
                     </div>
 
                     <div class="col-sm-3" id="CreditFacilityAmountDiv">
@@ -297,6 +314,18 @@
             width: '100%'
         });
 
+        $("#CreditFacilityCurrencyInput").select2({
+            placeholder: "Select Currency",
+            allowClear: true,
+            width: '100%'
+        });
+
+        $("#CreditFacilityTypeInput").select2({
+            placeholder: "Select Credit Facility Type",
+            allowClear: true,
+            width: '100%'
+        });
+
         // 🔹 Change Number Type
         function changeNumberType() {
             var select = $("#NumberType");
@@ -354,6 +383,7 @@
         }
 
         $("input[name='tabs']").on("change", function () {
+            // alert();
             changeNumberType();
             toggleSearchMode();
         });
