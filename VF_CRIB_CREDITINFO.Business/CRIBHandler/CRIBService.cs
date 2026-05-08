@@ -1,4 +1,6 @@
 ﻿using Dapper;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Text;
@@ -73,6 +75,27 @@ namespace VF_CRIB_CREDITINFO.Business.SearchCRIBHandler
         {
             var query = "SELECT Id, InquiryReason, IsActive FROM InquiryReason WHERE IsActive = 1";
             return _connectionService.Query<InquiryReasonModel>(query);
+        }
+
+        // FIXED: replaced undefined connStr + raw SqlCommand with _connectionService + Dapper,
+        // consistent with all other methods in this class
+        public async Task<CribSearchResultModel> GetSearchResultAsync(string applicationNumber)
+        {
+            var query = @"
+                SELECT TOP 1
+                    Id, RequestId, WorkflowId, WorkflowState, Status,
+                    ApplicationNumber, CreditFacilityType, CreditFacilityCurrency,
+                    CreditFacilityAmount, FullName, Gender, DateOfBirth,
+                    NicNumber, AltNicNumber, AddressLine, City, Country,
+                    DataAvailabilityJson, CreatedAt
+                FROM CribSearchResults
+                WHERE ApplicationNumber = @AppNo
+                ORDER BY CreatedAt DESC";
+
+            return await _connectionService.QueryFirstOrDefaultAsync<CribSearchResultModel>(
+                query,
+                new { AppNo = applicationNumber ?? "" }
+            );
         }
     }
 }

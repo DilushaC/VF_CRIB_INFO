@@ -22,7 +22,6 @@
                 <div class="row">
                     <div class="col-7">
                         <label class="form-label">Search Type</label>
-
                         <div class="btn-group w-100" role="group">
                             <input type="radio" class="btn-check" name="tabs" id="IndividualSearch" checked>
                             <label class="btn btn-outline-info" for="IndividualSearch">Individual Search</label>
@@ -33,9 +32,8 @@
                     </div>
                 </div>
 
-                <!-- Inputs -->
+                <!-- Row 1: Number Type + Number -->
                 <div class="row" style="margin-top:3%;">
-                    <!-- Row 1: Number Type + Number -->
                     <div class="col-sm-3">
                         <div id="NumberTypeDiv">
                             <label class="form-label mt-2">
@@ -60,9 +58,10 @@
                     </div>
                 </div>
 
+                <!-- Row 2: Gender / CompanyName + FullName -->
                 <div class="row" style="margin-top:20px;">
-                    <!-- Row 2: Gender + Full Name -->
                     <div class="col-sm-3">
+                        <!-- Individual: Gender -->
                         <div id="GenderDiv">
                             <label class="form-label mt-2">
                                 Gender <span style="color: red;">*</span>
@@ -73,7 +72,7 @@
                                 <option value="Female">Female</option>
                             </select>
                         </div>
-                        <!-- Company Name -->
+                        <!-- Company: Company Name -->
                         <div id="CompanyNameDiv" style="display:none;">
                             <label class="form-label mt-2">
                                 Company Name <span style="color: red;">*</span>
@@ -82,6 +81,7 @@
                         </div>
                     </div>
                     <div class="col-sm-4">
+                        <!-- Individual: Full Name -->
                         <div id="FullNameDiv">
                             <label class="form-label mt-2">
                                 Full Name <span style="color: red;">*</span>
@@ -90,6 +90,8 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Reason of Inquiry -->
                 <div class="row" style="margin-top:20px;">
                     <div class="col-md-6" id="InquiryReasonDiv">
                         <label class="form-label mt-2">
@@ -107,6 +109,8 @@
                         </select>
                     </div>
                 </div>
+
+                <!-- Application Number -->
                 <div class="row" style="margin-top:20px; display:none;" id="ApplicationNumberDiv">
                     <div class="col-sm-3">
                         <label class="form-label mt-2">
@@ -115,8 +119,9 @@
                         <input type="text" id="ApplicationNumberInput" class="form-control">
                     </div>
                 </div>
-                <div class="row" style="margin-top:20px; display:none;" id="CreditFacilityRegion">
 
+                <!-- Credit Facility -->
+                <div class="row" style="margin-top:20px; display:none;" id="CreditFacilityRegion">
                     <div class="col-sm-3" id="CreditFacilityTypeDiv">
                         <label class="form-label mt-2">
                             Credit Facility Type <span style="color: red;">*</span>
@@ -147,15 +152,15 @@
                             }
                         </select>
                     </div>
-
                     <div class="col-sm-3" id="CreditFacilityAmountDiv">
                         <label class="form-label mt-2">
                             Credit Facility Amount <span style="color: red;">*</span>
                         </label>
                         <input type="number" id="CreditFacilityAmountInput" class="form-control">
                     </div>
-
                 </div>
+
+                <!-- Mail Address -->
                 <div class="row" style="margin-top:20px; display:none;" id="MailAddressDiv">
                     <div class="col-sm-3">
                         <label class="form-label mt-2">
@@ -164,23 +169,24 @@
                         <input type="email" id="MailAddressInput" class="form-control">
                     </div>
                 </div>
-                <div class="row" style="margin-top:20px; display:none;" id="CourtRegion">
 
+                <!-- Court Region -->
+                <div class="row" style="margin-top:20px; display:none;" id="CourtRegion">
                     <div class="col-sm-3" id="CourtNameDiv">
                         <label class="form-label mt-2">
                             Name of Court <span style="color: red;">*</span>
                         </label>
                         <input type="text" id="CourtNameInput" class="form-control">
                     </div>
-
                     <div class="col-sm-3" id="OrderNumberDiv">
                         <label class="form-label mt-2">
                             Order Number <span style="color: red;">*</span>
                         </label>
                         <input type="number" id="OrderNumberInput" class="form-control">
                     </div>
-
                 </div>
+
+                <!-- Remarks -->
                 <div class="row" style="margin-top:20px; display:none;" id="RemarksDiv">
                     <div class="col-sm-3">
                         <label class="form-label mt-2">
@@ -189,6 +195,8 @@
                         <textarea id="RemarksInput" class="form-control" rows="4"></textarea>
                     </div>
                 </div>
+
+                <!-- Application Date -->
                 <div class="row" style="margin-top:20px; display:none;" id="ApplicationDateDiv">
                     <div class="col-sm-3">
                         <label class="form-label mt-2">
@@ -197,6 +205,7 @@
                         <input type="date" id="ApplicationDateInput" class="form-control">
                     </div>
                 </div>
+
                 <!-- Interactive Search Switch -->
                 <div class="row" style="margin-top:20px;">
                     <div class="col-md-4">
@@ -234,37 +243,26 @@
 
                 <!-- Result Section -->
                 <div class="row" style="margin-top:5%;">
-
                     <div class="col-lg-6">
                         <p class="mb-1 fw-bold text-muted">Application Number :</p>
                         <p class="text-muted font-14" id="AppNo"></p>
                     </div>
-
                     <div class="col-lg-6">
                         <p class="mb-1 fw-bold text-muted">Full Name :</p>
                         <p class="text-muted font-14" id="ResultFullName"></p>
                     </div>
-
                     <div class="col-lg-6">
                         <p class="mb-1 fw-bold text-muted">Credit Facility Type :</p>
                         <p class="text-muted font-14" id="FacilityType"></p>
                     </div>
-
                     <div class="col-lg-6">
                         <p class="mb-1 fw-bold text-muted">Credit Facility Amount :</p>
                         <p class="text-muted font-14" id="Amount"></p>
                     </div>
-
                     <div class="col-lg-6">
                         <p class="mb-1 fw-bold text-muted">Currency :</p>
                         <p class="text-muted font-14" id="Currency"></p>
                     </div>
-
-                    <div class="col-lg-6">
-                        <p class="mb-1 fw-bold text-muted">Currency :</p>
-                        <p class="text-muted font-14" id="Currency"></p>
-                    </div>
-
                     <div class="col-lg-6">
                         <p class="mb-1 fw-bold text-muted">Report Date :</p>
                         <p class="text-muted font-14" id="ReportDate"></p>
@@ -292,44 +290,17 @@
 <script>
     $(document).ready(function () {
 
-        // Init Select2
-        $("#Gender").select2({
-            placeholder: "Select Gender",
-            allowClear: true,
-            width: '100%'
-        });
+        // ── Init Select2 ──────────────────────────────────────────────
+        function initSelect2() {
+            $("#Gender").select2({ placeholder: "Select Gender", allowClear: true, width: '100%' });
+            $("#NumberType").select2({ placeholder: "Select Number Type", allowClear: true, width: '100%' });
+            $("#CreditFacilityCurrencyInput").select2({ placeholder: "Select Currency", allowClear: true, width: '100%' });
+            $("#CreditFacilityTypeInput").select2({ placeholder: "Select Credit Facility Type", allowClear: true, width: '100%' });
+            $("#InquiryReasonInput").select2({ placeholder: "Select Inquiry Reason", allowClear: true, width: '100%' });
+        }
+        initSelect2();
 
-        $("#InquiryReason").select2({
-            placeholder: "Select Reason",
-            allowClear: true,
-            width: '100%'
-        });
-
-        $("#NumberType").select2({
-            placeholder: "Select Number Type",
-            allowClear: true,
-            width: '100%'
-        });
-
-        $("#CreditFacilityCurrencyInput").select2({
-            placeholder: "Select Currency",
-            allowClear: true,
-            width: '100%'
-        });
-
-        $("#CreditFacilityTypeInput").select2({
-            placeholder: "Select Credit Facility Type",
-            allowClear: true,
-            width: '100%'
-        });
-
-        $("#InquiryReasonInput").select2({
-            placeholder: "Select Inquiry Reason",
-            allowClear: true,
-            width: '100%'
-        });
-
-        // 🔹 Change Number Type
+        // ── Rebuild Number Type dropdown based on search mode ─────────
         function changeNumberType() {
             var select = $("#NumberType");
 
@@ -342,6 +313,7 @@
                     <option></option>
                     <option value="NIC">NIC</option>
                     <option value="Passport">Passport</option>
+                    <option value="NationalID">NationalID</option>
                 `);
             } else {
                 select.html(`
@@ -350,118 +322,85 @@
                 `);
             }
 
-            select.select2({
-                placeholder: "Select Number Type",
-                allowClear: true,
-                width: '100%'
-            });
+            select.select2({ placeholder: "Select Number Type", allowClear: true, width: '100%' });
         }
 
-        // 🔹 Toggle Search Mode
+        // ── Show/hide fields based on Individual vs Company ───────────
         function toggleSearchMode() {
             var isIndividual = $("#IndividualSearch").is(":checked");
 
             if (isIndividual) {
-                $("#FullNameDiv").show();
                 $("#GenderDiv").show();
+                $("#FullNameDiv").show();
                 $("#CompanyNameDiv").hide();
                 $("#CompanyNameInput").val("");
             } else {
-                $("#FullNameDiv").hide();
                 $("#GenderDiv").hide();
+                $("#FullNameDiv").hide();
                 $("#CompanyNameDiv").show();
                 $("#FullNameInput").val("");
                 $("#Gender").val(null).trigger("change");
             }
 
+            // Reset shared fields
             $("#Number").val("");
+            $("#NumberValidationMsg").hide();
             $("#NumberType").val(null).trigger("change");
-            $("#InquiryReason").val(null).trigger("change");
+            $("#InquiryReasonInput").val(null).trigger("change");
             $("#ConsentSwitch").prop("checked", false);
             $("#InterActiveSearch").prop("checked", false);
-
-            // 🔹 Reset Application Number
-            $("#ApplicationNumberDiv").hide();
-            $("#ApplicationNumberInput").val("");
+            resetConditionalFields();
         }
 
+        // ── Hide all conditional sections & clear their inputs ────────
+        function resetConditionalFields() {
+            $("#ApplicationNumberDiv, #ApplicationDateDiv, #CreditFacilityRegion, #CourtRegion, #MailAddressDiv, #RemarksDiv").hide();
+            $("#ApplicationNumberInput, #ApplicationDateInput, #CreditFacilityAmountInput, #MailAddressInput, #RemarksInput, #CourtNameInput, #OrderNumberInput").val("");
+            $("#CreditFacilityTypeInput, #CreditFacilityCurrencyInput").val(null).trigger("change");
+        }
+
+        // ── Radio change ──────────────────────────────────────────────
         $("input[name='tabs']").on("change", function () {
-            // alert();
             changeNumberType();
             toggleSearchMode();
         });
 
-        // 🔹 Show/Hide Application Number based on Inquiry Reason
-        $("#InquiryReason").on("change", function () {
+        // ── Inquiry Reason change ─────────────────────────────────────
+        // FIX: was incorrectly bound to "#InquiryReason" — correct id is "#InquiryReasonInput"
+        $("#InquiryReasonInput").on("change", function () {
             var value = $(this).val();
 
-            // First hide everything by default
-            $("#ApplicationNumberDiv").hide();
-            $("#ApplicationDateDiv").hide();
+            resetConditionalFields();
 
-            $("#CreditFacilityRegion").hide();
-            $("#CourtRegion").hide();
-            $("#CreditFacilityTypeDiv").hide();
-            $("#CreditFacilityCurrencyDiv").hide();
-            $("#CreditFacilityAmountDiv").hide();
-            $("#MailAddressDiv").hide();
-            $("#RemarksDiv").hide();
-
-
-            // Clear values
-            $("#ApplicationNumberInput").val("");
-            $("#ApplicationDateInput").val("");
-            $("#CreditFacilityTypeInput").val("");
-            $("#CreditFacilityCurrencyInput").val("");
-            $("#CreditFacilityAmountInput").val("");
-            $("#MailAddressInput").val("");
-            $("#RemarksInput").val("");
-            $("#CourtNameInput").val("");
-            $("#OrderNumberInput").val("");
-
-            // Apply logic
             if (value === "1" || value === "2" || value === "5" || value === "6") {
-
                 $("#ApplicationNumberDiv").show();
                 $("#ApplicationDateDiv").show();
-
-                // Show ALL credit facility fields
                 $("#CreditFacilityRegion").show();
                 $("#CreditFacilityTypeDiv").show();
                 $("#CreditFacilityCurrencyDiv").show();
                 $("#CreditFacilityAmountDiv").show();
-
             }
             else if (value === "4") {
-
                 $("#ApplicationNumberDiv").show();
                 $("#ApplicationDateDiv").show();
-
-                // Show ONLY Credit Facility Type
                 $("#CreditFacilityRegion").show();
                 $("#CreditFacilityTypeDiv").show();
-
-                // Keep others hidden
                 $("#CreditFacilityCurrencyDiv").hide();
                 $("#CreditFacilityAmountDiv").hide();
             }
             else if (value === "7") {
-                $("#MailAddressDiv").show(); // ✅ show the DIV, not the input
+                $("#MailAddressDiv").show();
             }
-            else if (value === "8" || value === "9"){
-                $("#RemarksDiv").show(); // ✅ show the DIV, not the input
+            else if (value === "8" || value === "9") {
+                $("#RemarksDiv").show();
             }
-            else if (value === "10"){
+            else if (value === "10") {
                 $("#CourtRegion").show();
-                $("#CourtNameDiv").show();
-                $("#OrderNumberDiv").show();
                 $("#RemarksDiv").show();
             }
         });
 
-
-        //NIC passport validation
-            // 🔹 Real-time NIC / Passport format validation
+        // ── NIC / Passport real-time validation ───────────────────────
         function validateNumberField() {
             var numberType = $("#NumberType").val();
             var value = $("#Number").val().trim();
@@ -472,237 +411,137 @@
                 return;
             }
 
-            var oldNIC     = /^\d{9}[VvXx]$/;          // 9 digits + V or X
-            var newNIC     = /^\d{12}$/;                // exactly 12 digits
-            var passport   = /^[A-Z]{1,2}\d{7}$/;      // 1-2 letters + 7 digits (Sri Lankan passport)
-
-            var isValid = false;
+            var oldNIC   = /^\d{9}[VvXx]$/;
+            var newNIC   = /^\d{12}$/;
+            var passport = /^[A-Z]{1,2}\d{7}$/;
 
             if (numberType === "NIC") {
-                isValid = oldNIC.test(value) || newNIC.test(value);
-                if (isValid) {
-                    msg.text("✔ Valid NIC format").css("color", "green").show();
-                } else {
-                    msg.text("✘ Invalid NIC — old format: 9 digits + V/X (e.g. 123456789V) | new format: 12 digits (e.g. 200012345678)").css("color", "red").show();
-                }
+                var isValid = oldNIC.test(value) || newNIC.test(value);
+                msg.text(isValid
+                    ? "✔ Valid NIC format"
+                    : "✘ Invalid NIC — old: 9 digits + V/X (e.g. 123456789V) | new: 12 digits (e.g. 200012345678)")
+                   .css("color", isValid ? "green" : "red").show();
             }
             else if (numberType === "Passport") {
-                isValid = passport.test(value);
-                if (isValid) {
-                    msg.text("✔ Valid Passport number format").css("color", "green").show();
-                } else {
-                    msg.text("✘ Invalid Passport — expected 1-2 uppercase letters followed by 7 digits (e.g. N1234567 or AB1234567)").css("color", "red").show();
-                }
+                var isValid = passport.test(value);
+                msg.text(isValid
+                    ? "✔ Valid Passport number format"
+                    : "✘ Invalid Passport — 1-2 uppercase letters + 7 digits (e.g. N1234567 or AB1234567)")
+                   .css("color", isValid ? "green" : "red").show();
             }
             else {
-                msg.hide(); // BRN or others — no format check
+                msg.hide();
             }
         }
 
-        $("#Number").on("input", function () {
-            validateNumberField();
-        });
+        $("#Number").on("input", validateNumberField);
 
-        // Re-validate when number type changes (in case number is already typed)
         $("#NumberType").on("change", function () {
             $("#Number").val("");
             $("#NumberValidationMsg").hide();
         });
-        // 🔹 Search Button Click
+
+        // ── Search Button ─────────────────────────────────────────────
         $("#SearchBtn").click(function () {
 
-            var numberType = $("#NumberType").val();
-            var number = $("#Number").val();
-            var isIndividual = $("#IndividualSearch").is(":checked");
-
-            var fullName = isIndividual ? $("#FullNameInput").val() : "";
-            var gender = isIndividual ? $("#Gender").val() : "";
-            var companyName = !isIndividual ? $("#CompanyNameInput").val() : "";
-
-            var inquiryReason = $("#InquiryReason").val();
-            var applicationNumber = $("#ApplicationNumberInput").val();
-            var creditFacilityType = $("#CreditFacilityTypeInput").val();
+            var numberType       = $("#NumberType").val();
+            var number           = $("#Number").val().trim();
+            var isIndividual     = $("#IndividualSearch").is(":checked");
+            var fullName         = isIndividual ? $("#FullNameInput").val().trim() : "";
+            var gender           = isIndividual ? $("#Gender").val() : "";
+            var companyName      = !isIndividual ? $("#CompanyNameInput").val().trim() : "";
+            var inquiryReason    = $("#InquiryReasonInput").val();
+            var applicationNumber   = $("#ApplicationNumberInput").val().trim();
+            var creditFacilityType  = $("#CreditFacilityTypeInput").val();
             var creditFacilityCurrency = $("#CreditFacilityCurrencyInput").val();
-            var creditFacilityAmount = $("#CreditFacilityAmountInput").val();
-            var applicationDate = $("#ApplicationDateInput").val();
-
-            var mailAddress = $("#MailAddressInput").val();
-            var remarks = $("#RemarksInput").val();
-            var courtName = $("#CourtNameInput").val();
-            var orderNumber = $("#OrderNumberInput").val();
-
-
-
-            var consentGiven = $("#ConsentSwitch").is(":checked");
+            var creditFacilityAmount   = $("#CreditFacilityAmountInput").val();
+            var applicationDate  = $("#ApplicationDateInput").val();
+            var mailAddress      = $("#MailAddressInput").val().trim();
+            var remarks          = $("#RemarksInput").val().trim();
+            var courtName        = $("#CourtNameInput").val().trim();
+            var orderNumber      = $("#OrderNumberInput").val();
+            var consentGiven     = $("#ConsentSwitch").is(":checked");
             var interactiveSearch = $("#InterActiveSearch").is(":checked");
 
-            let title = "";
-            let message = "";
+            var title = "", message = "";
 
             if (!numberType) {
-                title = "Number Type Required";
-                message = "Please select Number Type";
+                title = "Number Type Required"; message = "Please select Number Type";
             }
-
             else if (!number) {
-                title = "Number Required";
-                message = "Please enter the Number";
+                title = "Number Required"; message = "Please enter the Number";
             }
-            // NIC passport validation
-            else if (numberType === "NIC" && !/^\d{9}[VvXx]$|^\d{12}$/.test(number.trim())) {
-                title = "Invalid NIC Format";
-                message = "Please enter a valid NIC number";
+            else if (numberType === "NIC" && !/^\d{9}[VvXx]$|^\d{12}$/.test(number)) {
+                title = "Invalid NIC Format"; message = "Please enter a valid NIC number";
             }
-            else if (numberType === "Passport" && !/^[A-Z]{1,2}\d{7}$/.test(number.trim())) {
-                title = "Invalid Passport Format";
-                message = "Please enter a valid Passport number";
+            else if (numberType === "Passport" && !/^[A-Z]{1,2}\d{7}$/.test(number)) {
+                title = "Invalid Passport Format"; message = "Please enter a valid Passport number";
             }
-
-
             else if (isIndividual && !fullName) {
-                title = "Full Name Required";
-                message = "Please enter Full Name";
+                title = "Full Name Required"; message = "Please enter Full Name";
             }
             else if (isIndividual && !gender) {
-                title = "Gender Required";
-                message = "Please select Gender";
+                title = "Gender Required"; message = "Please select Gender";
             }
             else if (!isIndividual && !companyName) {
-                title = "Company Name Required";
-                message = "Please enter Company Name";
+                title = "Company Name Required"; message = "Please enter Company Name";
             }
             else if (!inquiryReason) {
-                title = "Inquiry Reason Required";
-                message = "Please select Inquiry Reason";
+                title = "Inquiry Reason Required"; message = "Please select Inquiry Reason";
             }
-
-            // ✅ For Inquiry 1,2,5,6 → ALL fields required
             else if (["1", "2", "5", "6"].includes(inquiryReason)) {
-
-                if (!applicationNumber) {
-                    title = "Application Number Required";
-                    message = "Please enter Application Number";
-                }
-                else if (!creditFacilityType) {
-                    title = "Credit Facility Type Required";
-                    message = "Please enter Credit Facility Type";
-                }
-                else if (!creditFacilityCurrency) {
-                    title = "Currency Required";
-                    message = "Please enter Credit Facility Currency";
-                }
-                else if (!creditFacilityAmount) {
-                    title = "Amount Required";
-                    message = "Please enter Credit Facility Amount";
-                }
-                else if (!applicationDate) {
-                    title = "Application Date Required";
-                    message = "Please select Application Date";
-                }
+                if (!applicationNumber)     { title = "Application Number Required"; message = "Please enter Application Number"; }
+                else if (!creditFacilityType)   { title = "Credit Facility Type Required"; message = "Please select Credit Facility Type"; }
+                else if (!creditFacilityCurrency) { title = "Currency Required"; message = "Please select Credit Facility Currency"; }
+                else if (!creditFacilityAmount)  { title = "Amount Required"; message = "Please enter Credit Facility Amount"; }
+                else if (!applicationDate)  { title = "Application Date Required"; message = "Please select Application Date"; }
             }
-
-            // ✅ For Inquiry 4 → ONLY type required
             else if (inquiryReason === "4") {
-
-                if (!applicationNumber) {
-                    title = "Application Number Required";
-                    message = "Please enter Application Number";
-                }
-                else if (!creditFacilityType) {
-                    title = "Credit Facility Type Required";
-                    message = "Please enter Credit Facility Type";
-                }
-                else if (!applicationDate) {
-                    title = "Application Date Required";
-                    message = "Please select Application Date";
-                }
+                if (!applicationNumber)   { title = "Application Number Required"; message = "Please enter Application Number"; }
+                else if (!creditFacilityType) { title = "Credit Facility Type Required"; message = "Please select Credit Facility Type"; }
+                else if (!applicationDate){ title = "Application Date Required"; message = "Please select Application Date"; }
             }
             else if (inquiryReason === "7") {
-
-                if (!mailAddress) {
-                    title = "Mail Address Required";
-                    message = "Please enter Mail Address";
-                }
+                if (!mailAddress) { title = "Mail Address Required"; message = "Please enter Mail Address"; }
             }
-
             else if (inquiryReason === "8" || inquiryReason === "9") {
-
-                if (!remarks) {
-                    title = "Remarks Required";
-                    message = "Please enter Remarks";
-                }
+                if (!remarks) { title = "Remarks Required"; message = "Please enter Remarks"; }
             }
             else if (inquiryReason === "10") {
-
-                if (!courtName) {
-                    title = "Court Name Required";
-                    message = "Please enter Court Name";
-                }
-                else if(!orderNumber){
-                    title = "Order Number is Required";
-                    message = "Please enter Order Number";
-                }
+                if (!courtName)      { title = "Court Name Required"; message = "Please enter Court Name"; }
+                else if (!orderNumber) { title = "Order Number Required"; message = "Please enter Order Number"; }
             }
 
             if (title) {
-                Swal.fire({
-                    icon: 'warning',
-                    title: title,
-                    text: message,
-                    confirmButtonColor: '#3085d6'
-                });
+                Swal.fire({ icon: 'warning', title, text: message, confirmButtonColor: '#3085d6' });
                 return;
             }
 
             if (!interactiveSearch && !consentGiven) {
-                Swal.fire({
-                    icon: 'warning',
-                    title: "Consent Required",
-                    text: "Please confirm customer consent or enable Interactive Search",
-                    confirmButtonColor: '#3085d6'
-                });
+                Swal.fire({ icon: 'warning', title: "Consent Required", text: "Please confirm customer consent or enable Interactive Search", confirmButtonColor: '#3085d6' });
                 return;
             }
 
-            // 🔹 AJAX Call
+            // ── AJAX ─────────────────────────────────────────────────
             $.ajax({
                 url: '/SearchCRIB/SearchData',
                 type: 'POST',
                 data: {
-                    numberType,
-                    number,
-                    fullName,
-                    gender,
-                    companyName,
-                    consentGiven,
-                    isIndividual,
-                    inquiryReason,
-                    interactiveSearch,
-                    applicationNumber
+                    numberType, number, fullName, gender, companyName,
+                    consentGiven, isIndividual, inquiryReason, interactiveSearch, applicationNumber
                 },
                 success: function (res) {
-
                     $("#AppNo").text(res.applicationNumber);
                     $("#ResultFullName").text(res.fullName || res.companyName);
                     $("#FacilityType").text(res.creditFacilityType);
-
                     if (res.creditFacilityAmount) {
-                        $("#Amount").text(
-                            res.creditFacilityAmount.currency + " " +
-                            res.creditFacilityAmount.value
-                        );
+                        $("#Amount").text(res.creditFacilityAmount.currency + " " + res.creditFacilityAmount.value);
                     }
                 },
                 error: function () {
-                    Swal.fire({
-                        icon: 'error',
-                        title: "API Error",
-                        text: "Please contact system admin",
-                        confirmButtonColor: '#3085d6'
-                    });
+                    Swal.fire({ icon: 'error', title: "API Error", text: "Please contact system admin", confirmButtonColor: '#3085d6' });
                 }
             });
-
         });
 
     });

@@ -115,5 +115,11 @@ namespace VF_CRIB_CREDITINFO.Business.ConnectionHandler
             adapter.Fill(dataSet);
             return dataSet;
         }
+
+        public async Task<T> QueryFirstOrDefaultAsync<T>(string query, object parameters = null)
+        {
+            using var connection = _context.CreateConnection();
+            return await connection.QueryFirstOrDefaultAsync<T>(query, parameters);
+        }
     }
 }
